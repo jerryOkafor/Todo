@@ -1,6 +1,0 @@
-include ':timeline'
-include ':dataReportFeature'
-include ':core'
-include ':createTaskFeature'
-include ':app'
-rootProject.name = "Todo"

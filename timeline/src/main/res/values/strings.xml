@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_third_fragment">Hello Third Fragment</string>
+    <string name="third">Third</string>
+</resources>

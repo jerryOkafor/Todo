@@ -1,0 +1,159 @@
+/**Default and Adroid Config*/
+object Config {
+    object Version {
+        const val minSdkVersion = 21
+        const val compileSdkVersion = 29
+        const val targetSdkVersion = 29
+        const val versionName = "1.0"
+        const val versionCode = 1
+    }
+
+    const val isMultiDexEnabled = true
+
+    object Android {
+        const val applicationId = "me.jerryhanks.todo"
+        const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+/**Help handle group of libraries*/
+interface Libraries {
+    val components: List<String>
+}
+
+object Dependencies {
+    object Versions {
+        const val room = "2.2.5"
+    }
+
+    object Kotlin {
+        object Versions {
+            const val kotlin = "1.3.72"
+        }
+
+        const val stdlib: String = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+    }
+
+    object AndroidX : Libraries {
+        object Versions {
+            const val coreKtx = "1.3.0"
+            const val lifeCycle = "2.3.0-alpha03"
+        }
+
+        const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+        const val lifeCycleCommon =
+            "androidx.lifecycle:lifecycle-common-java8:${Versions.lifeCycle}"
+        const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifeCycle}"
+        const val viewModel =
+            "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifeCycle}"
+
+        const val roomRuntime = "androidx.room:room-runtime:${Dependencies.Versions.room}"
+        const val roomCompiler = "androidx.room:room-compiler:${Dependencies.Versions.room}"
+        const val roomKtx = "androidx.room:room-ktx:${Dependencies.Versions.room}"
+
+        override val components = listOf(coreKtx, lifeCycleCommon, viewModel)
+    }
+
+    object Hilt : Libraries {
+        object Versions {
+            const val hilt = "2.28-alpha"
+            const val hiltVM = "1.0.0-alpha01"
+        }
+
+        const val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hilt}"
+        const val hiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltVM}"
+        const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+        const val hiltCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltVM}"
+
+        override val components = listOf(
+            hiltAndroid, hiltAndroidCompiler, hiltViewModel,
+            hiltCompiler
+        )
+    }
+
+
+    object Retrofit : Libraries {
+        object Versions {
+            const val retrofit = "2.9.0"
+        }
+
+        const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+
+        override val components = listOf(retrofit, gsonConverter)
+    }
+
+    object Navigation : Libraries {
+        object Version {
+            const val navigation = "2.3.0"
+        }
+
+        const val navigationFragmentKtx =
+            "androidx.navigation:navigation-fragment-ktx:${Version.navigation}"
+        const val navigationUiKtx =
+            "androidx.navigation:navigation-ui-ktx:${Version.navigation}"
+        const val navigationDFM =
+            "androidx.navigation:navigation-dynamic-features-fragment:${Version.navigation}"
+
+        override val components =
+            listOf(navigationFragmentKtx, navigationFragmentKtx, navigationDFM)
+    }
+
+    /**View*/
+    object View {
+        private object Versions {
+            const val material = "1.1.0"
+            const val constraintLayout = "1.1.3"
+        }
+
+        const val material = "com.google.android.material:material:${Versions.material}"
+        const val constraintLayout =
+            "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    }
+
+    /**Utils*/
+    object Utils {
+        private object Versions {
+            const val timber = "4.7.1"
+            const val playCore = "1.7.3"
+            const val playCoreKtx = "1.7.0"
+        }
+
+        const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+        const val playCore = "com.google.android.play:core:${Versions.playCore}"
+        const val playCoreKtx = "com.google.android.play:core-ktx:${Versions.playCoreKtx}"
+    }
+
+    /**Modules*/
+    object ProjectModule {
+        const val app = ":app"
+        const val core = ":core"
+        const val report = ":dataReportFeature"
+        const val createTask = ":createTaskFeature"
+        const val timeline = ":timeline"
+    }
+
+
+    object Test : Libraries {
+        object Versions {
+            const val junit = "4.13"
+        }
+
+        const val junit = "junit:junit:${Versions.junit}"
+        const val rootTesting = "androidx.room:room-testing:${Dependencies.Versions.room}"
+
+        override val components = listOf(junit)
+    }
+
+    object AndroidTest : Libraries {
+        object Versions {
+            const val testExtension = "1.1.1"
+            const val espresso = "3.2.0"
+        }
+
+        const val testExtension = "androidx.test.ext:junit:${Versions.testExtension}"
+        const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+
+        override val components = listOf(testExtension, espresso)
+    }
+}
