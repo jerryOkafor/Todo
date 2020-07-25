@@ -3,9 +3,9 @@ plugins {
     `kotlin-dsl-precompiled-script-plugins`
 }
 
-
 repositories {
-    maven { url = uri("https://jitpack.io") }
+    maven("https://plugins.gradle.org/m2/")
+    maven("https://jitpack.io")
     google()
     jcenter()
     mavenCentral()
@@ -17,24 +17,24 @@ object Plugins {
         const val androidGradle: String = "4.0.1"
         const val navigation: String = "2.3.0"
         const val daggerHiltAndroid: String = "2.28-alpha"
+        const val ktLint = "9.3.0"
     }
 
-    const val kotlin: String = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
-    const val androidGradle: String = "com.android.tools.build:gradle:${Version.androidGradle}"
-    const val navigationSafeArgs: String =
+    const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
+    const val androidGradle = "com.android.tools.build:gradle:${Version.androidGradle}"
+    const val navigationSafeArgs =
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Version.navigation}"
-    const val daggerHilt: String =
+    const val daggerHilt =
         "com.google.dagger:hilt-android-gradle-plugin:${Version.daggerHiltAndroid}"
+    const val ktLint = "org.jlleitschuh.gradle:ktlint-gradle:${Version.ktLint}"
 }
-
-val deps =
-    listOf(Plugins.kotlin, Plugins.androidGradle, Plugins.navigationSafeArgs, Plugins.daggerHilt)
 
 dependencies {
     implementation(Plugins.kotlin)
     implementation(Plugins.androidGradle)
     implementation(Plugins.navigationSafeArgs)
     implementation(Plugins.daggerHilt)
+    implementation(Plugins.ktLint)
 }
 
 

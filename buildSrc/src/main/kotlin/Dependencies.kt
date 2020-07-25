@@ -100,19 +100,23 @@ object Dependencies {
     }
 
     /**View*/
-    object View {
+    object View : Libraries {
         private object Versions {
             const val material = "1.1.0"
             const val constraintLayout = "1.1.3"
+            const val calendarView = "0.4.0"
         }
 
         const val material = "com.google.android.material:material:${Versions.material}"
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+        const val calenderView = "com.github.kizitonwose:CalendarView:${Versions.calendarView}"
+
+        override val components = listOf(material, constraintLayout, calenderView)
     }
 
     /**Utils*/
-    object Utils {
+    object Utils : Libraries {
         private object Versions {
             const val timber = "4.7.1"
             const val playCore = "1.7.3"
@@ -122,6 +126,7 @@ object Dependencies {
         const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
         const val playCore = "com.google.android.play:core:${Versions.playCore}"
         const val playCoreKtx = "com.google.android.play:core-ktx:${Versions.playCoreKtx}"
+        override val components = listOf(timber, playCore, playCoreKtx)
     }
 
     /**Modules*/
@@ -142,7 +147,7 @@ object Dependencies {
         const val junit = "junit:junit:${Versions.junit}"
         const val rootTesting = "androidx.room:room-testing:${Dependencies.Versions.room}"
 
-        override val components = listOf(junit)
+        override val components = listOf(junit, rootTesting)
     }
 
     object AndroidTest : Libraries {

@@ -14,11 +14,16 @@ fun RepositoryHandler.applyDefault() {
     google()
     jcenter()
     mavenCentral()
+    maven("https://jitpack.io")
+    maven("https://plugins.gradle.org/m2/")
     maven("https://dl.bintray.com/kotlin/kotlin-eap")
     maven("https://oss.sonatype.org/content/repositories/snapshots/")
 }
 
 /**Plugin Extensions*/
+//Apply ktLint
+val PluginDependenciesSpec.applyKtLint: PluginDependencySpec
+    get() = id("org.jlleitschuh.gradle.ktlint")
 
 //Apply Android
 val PluginDependenciesSpec.applyAndroidApplication: PluginDependencySpec
@@ -26,7 +31,12 @@ val PluginDependenciesSpec.applyAndroidApplication: PluginDependencySpec
 
 //Apply kotlin
 val PluginDependenciesSpec.applyKotlinAndroid: PluginDependencySpec
-    get() = id("kotlin-android")
+    get() = kotlin("android")
+
+//apply kotlin android extension
+val PluginDependenciesSpec.applyKotlinAndroidExtension: PluginDependencySpec
+    get() = kotlin("android.extensions")
+
 
 //Apply Library
 val PluginDependenciesSpec.applyLibrary: PluginDependencySpec
@@ -34,7 +44,7 @@ val PluginDependenciesSpec.applyLibrary: PluginDependencySpec
 
 //Apply Kotlin Library
 val PluginDependenciesSpec.applyKotlinLibrary: PluginDependencySpec
-    get() = id("kotlin-library")
+    get() = kotlin("library")
 
 //Apply dynamic feature
 val PluginDependenciesSpec.applyDynamicFeature: PluginDependencySpec
@@ -47,10 +57,6 @@ val PluginDependenciesSpec.applyDaggerHilt: PluginDependencySpec
 //Apply nav safe args
 val PluginDependenciesSpec.applyNavSafeArgs: PluginDependencySpec
     get() = id("androidx.navigation.safeargs.kotlin")
-
-//apply kotlin android extension
-val PluginDependenciesSpec.applyKotlinAndroidExtension: PluginDependencySpec
-    get() = kotlin("android.extensions")
 
 //Apply kotlin kapt plugin
 val PluginDependenciesSpec.applyKotlinKapt: PluginDependencySpec
