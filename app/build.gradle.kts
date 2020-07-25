@@ -1,5 +1,6 @@
 import Dependencies.AndroidTest
 import Dependencies.AndroidX
+import Dependencies.Desugaring
 import Dependencies.Hilt
 import Dependencies.Kotlin
 import Dependencies.Navigation
@@ -56,6 +57,9 @@ android {
 
     @Suppress("UnstableApiUsage")
     compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled = true
+
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -65,6 +69,7 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    coreLibraryDesugaring(Desugaring.desugaring)
 
     /**Modules*/
     implementation(project(core))
@@ -72,14 +77,13 @@ dependencies {
 
     implementation(Kotlin.stdlib)
 
-
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.lifeCycleCommon)
     implementation(AndroidX.liveData)
     implementation(AndroidX.viewModel)
-
     implementation(View.material)
     implementation(View.constraintLayout)
+    implementation(View.calenderView)
 
     /**Utils*/
     api(Utils.timber)

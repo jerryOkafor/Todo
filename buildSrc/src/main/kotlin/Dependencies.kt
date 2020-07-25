@@ -26,6 +26,17 @@ object Dependencies {
         const val room = "2.2.5"
     }
 
+    object Desugaring : Libraries {
+        object Version {
+            const val desugar = "1.0.9"
+        }
+
+        const val desugaring = "com.android.tools:desugar_jdk_libs:${Version.desugar}"
+
+        override val components = listOf(desugaring)
+
+    }
+
     object Kotlin {
         object Versions {
             const val kotlin = "1.3.72"
