@@ -14,6 +14,7 @@ import Dependencies.View
 //https://developer.android.com/jetpack/androidx/migrate/artifact-mappings
 //https://stackoverflow.com/questions/62712430/import-kotlinx-android-synthetic-failed-android-studio-doesnt-find-it-but-i-c
 //https://issuetracker.google.com/issues/145888144
+//https://developer.android.com/studio/write/java8-support
 
 plugins {
     applyAndroidApplication
