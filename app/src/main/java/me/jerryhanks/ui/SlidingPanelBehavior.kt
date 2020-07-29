@@ -188,7 +188,5 @@ class SlidingPanelBehavior(context: Context?, attrs: AttributeSet?) :
                 behavior.topAndBottomOffset
             } else 0
         }
-
-        private const val TAG = "SlidingPanelBehavior"
     }
 }

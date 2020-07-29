@@ -136,9 +136,9 @@ class FirstFragment : Fragment(), Navigable {
         }
     }
 
-    private val navigator by lazy {
-        Navigator(this, this)
-    }
+//    private val navigator by lazy {
+//        Navigator(this, this)
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -201,6 +201,7 @@ class FirstFragment : Fragment(), Navigable {
         val currentMonth = YearMonth.now()
         val startMonth = currentMonth.minusMonths(10)
         val endMonth = currentMonth.plusMonths(10)
+
         calendar.setup(startMonth, endMonth, daysOfWeek.first())
 //        calendar.scrollToMonth(currentMonth)
         calendar.scrollToDate(LocalDate.now(), DayOwner.THIS_MONTH)
@@ -223,7 +224,6 @@ class FirstFragment : Fragment(), Navigable {
         todoRecycler.layoutManager = layoutManager
         todoRecycler.adapter = todoAdapter
 
-        val todos = (0..30).map { Todo(id = it.toLong()) }
-        todoAdapter.submitList(todos)
+        todoAdapter.submitList((0..30).map { Todo(id = it.toLong()) })
     }
 }

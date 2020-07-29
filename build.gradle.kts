@@ -1,9 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-//    plugins.common
+    plugins.common
     plugins.ktlint
-//    plugins.detekt
+    plugins.detekt
 }
 
 buildscript {

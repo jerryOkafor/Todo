@@ -12,11 +12,18 @@ import javax.inject.Singleton
  **/
 @Singleton
 class TodoViewModelFactory @Inject
+@Suppress
 constructor(private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>) :
     ViewModelProvider.Factory {
 //    https://stackoverflow.com/questions/44638878/binding-into-map-with-kclass-type
 
-    @Suppress("UNCHECKED_CAST")
+
+    @Suppress(
+        "UNCHECKED_CAST",
+        "TooGenericExceptionCaught",
+        "TooGenericExceptionThrown",
+        "ThrowingNewInstanceOfSameException"
+    )
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         var creator: Provider<out ViewModel>? = creators[modelClass]
         if (creator == null) {
@@ -33,7 +40,7 @@ constructor(private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcard
 
         try {
             return creator.get() as T
-        } catch (e: Exception) {
+        } catch (e: RuntimeException) {
             throw RuntimeException(e)
         }
     }

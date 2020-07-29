@@ -23,7 +23,7 @@ class TodoAppBarBehavior(context: Context, attrs: AttributeSet) :
 
     // Determines if the appBar can be dragged open or not via direct touch on the appBar.
     private var canDrag = true
-    private val isPositive = false
+//    private val isPositive = false
 
     init {
         setUp()
@@ -42,22 +42,19 @@ class TodoAppBarBehavior(context: Context, attrs: AttributeSet) :
         child: AppBarLayout,
         event: MotionEvent
     ): Boolean {
-        if (event.action == MotionEvent.ACTION_DOWN) {
-            // If appBar is closed. Only allow scrolling in defined area.
-            if (child.top <= -child.totalScrollRange) {
-                canDrag = event.y < canOpenBottom
-            }
+        if (event.action == MotionEvent.ACTION_DOWN && child.top <= -child.totalScrollRange) {
+            canDrag = event.y < canOpenBottom
         }
         return super.onInterceptTouchEvent(parent, child, event)
     }
 
-    fun setCanOpenBottom(bottom: Int) {
-        canOpenBottom = bottom
-    }
+//    fun setCanOpenBottom(bottom: Int) {
+//        canOpenBottom = bottom
+//    }
 
-    companion object {
-        private const val TOP_CHILD_FLING_THRESHOLD = 3
-    }
+//    companion object {
+//        private const val TOP_CHILD_FLING_THRESHOLD = 3
+//    }
 }
 
 class TodoRecyclerView @JvmOverloads constructor(
@@ -67,8 +64,7 @@ class TodoRecyclerView @JvmOverloads constructor(
 ) : RecyclerView(context, attrs, defStyle) {
     private var appBarTracking: AppBarTracking? = null
     private var view: View? = null
-
-    private var current: Int = 0
+//    private var current: Int = 0
     private var layoutManager: LinearLayoutManager? = null
 
     interface AppBarTracking {

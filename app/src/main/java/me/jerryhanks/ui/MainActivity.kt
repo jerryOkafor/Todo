@@ -1,4 +1,5 @@
 package me.jerryhanks.ui
+
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.navigation.findNavController
@@ -18,7 +19,7 @@ class MainActivity : BaseActivity(), Navigable {
     @Inject
     lateinit var analyticsService: Analytics
 
-    private val mainVM by viewModels<MainActivityViewModel>()
+//    private val mainVM by viewModels<MainActivityViewModel>()
 
     private lateinit var navigator: Navigator
 

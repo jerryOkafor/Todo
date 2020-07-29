@@ -7,11 +7,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint")
 }
 
-
 subprojects {
-//    applyDetekt
-//    applyKtlint
-
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
     tasks.withType<KotlinCompile>().configureEach {
@@ -23,6 +19,7 @@ subprojects {
                     "kotlinx.coroutines.FlowPreview"
     }
 
+
     ktlint {
         version.set("0.37.2")
         debug.set(true)
@@ -33,7 +30,7 @@ subprojects {
         ignoreFailures.set(true)
         enableExperimentalRules.set(true)
         additionalEditorconfigFile.set(file("$rootDir/config/ktlint/.editorconfig"))
-//        disabledRules.set(setOf("insert_final_newline", "no-wildcard-imports", "import-ordering"))
+        disabledRules.set(setOf("insert_final_newline", "no-wildcard-imports", "import-ordering"))
 //        reporters {
 //            reporter(ReporterType.PLAIN)
 //            reporter(ReporterType.CHECKSTYLE)
@@ -52,9 +49,9 @@ subprojects {
 //        kotlinScriptAdditionalPaths {
 //            include(fileTree("scripts/"))
 //        }
-//        filter {
-//            exclude("**/generated/**")
-//            include("**/kotlin/**")
-//        }
+        filter {
+            exclude("**/generated/**")
+            include("**/kotlin/**")
+        }
     }
 }

@@ -38,10 +38,5 @@ class TodoAdapter : ListAdapter<Todo, TodoAdapter.TodoViewHolder>(DIFF_CALLBACK)
     }
 
     inner class TodoViewHolder(override val containerView: View) :
-        RecyclerView.ViewHolder(containerView), LayoutContainer {
-
-//        fun bind(todo: Todo) {
-//
-//        }
-    }
+        RecyclerView.ViewHolder(containerView), LayoutContainer
 }
