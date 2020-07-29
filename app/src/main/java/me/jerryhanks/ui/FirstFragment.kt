@@ -33,7 +33,6 @@ import java.time.format.TextStyle
 import java.time.temporal.WeekFields
 import java.util.*
 
-
 fun daysOfWeekFromLocale(): Array<DayOfWeek> {
     val firstDayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
     var daysOfWeek = DayOfWeek.values()
@@ -65,7 +64,6 @@ class FirstFragment : Fragment(), Navigable {
     private var expandedFirst = 0
     private var appBarMaxOffset = 0
     private var isExpanded = false
-
 
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM")
 
@@ -109,11 +107,9 @@ class FirstFragment : Fragment(), Navigable {
 
                         MainActivity.topspace =
                             layoutManager.findViewByPosition(layoutManager.findFirstVisibleItemPosition())!!.top
-
                     }
                 }
             }
-
         }
 
     private fun setExpandAndCollapseEnabled(enabled: Boolean) {
@@ -121,7 +117,6 @@ class FirstFragment : Fragment(), Navigable {
             ViewCompat.setNestedScrollingEnabled(todoRecycler, enabled)
         }
     }
-
 
     private val abbBarTracking = object : TodoRecyclerView.AppBarTracking {
         override fun isAppBarIdle(): Boolean {
@@ -139,7 +134,6 @@ class FirstFragment : Fragment(), Navigable {
         override fun appbaroffset(): Int {
             return expandedFirst
         }
-
     }
 
     private val navigator by lazy {
@@ -147,7 +141,8 @@ class FirstFragment : Fragment(), Navigable {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
@@ -167,12 +162,15 @@ class FirstFragment : Fragment(), Navigable {
         setupCalendar(calendarView)
         setupCalendar(calendarView2)
 
-        legendLayout.children.forEachIndexed { index, view ->
-            (view as TextView).apply {
+        legendLayout.children.forEachIndexed { index, v ->
+            (v as TextView).apply {
                 text = daysOfWeek[index].getDisplayName(TextStyle.SHORT, Locale.ENGLISH)
                     .toUpperCase(Locale.ENGLISH)
 //                setTextColorRes(R.color.example_1_white_light)
             }
+        }
+
+        appBarLayout.post {
         }
 
         appBarLayout.addOnOffsetChangedListener(abbBarOffsetChangeListener)
@@ -193,7 +191,6 @@ class FirstFragment : Fragment(), Navigable {
 
         calendarView.monthScrollListener = { bindCalendar(it) }
         calendarView2.monthScrollListener = { bindCalendar(it) }
-
     }
 
     private fun bindCalendar(calendar: CalendarMonth) {
@@ -217,12 +214,10 @@ class FirstFragment : Fragment(), Navigable {
                 val textView = container.textView
                 textView.text = day.date.dayOfMonth.toString()
             }
-
         }
     }
 
     private fun setupRecyclerView() {
-
         todoRecycler.setAppBarTracking(abbBarTracking)
         todoAdapter = TodoAdapter()
         todoRecycler.layoutManager = layoutManager

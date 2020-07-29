@@ -4,12 +4,12 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
-
 
 /**
  * @author jerry on 26/07/2020
@@ -19,10 +19,10 @@ import com.google.android.material.appbar.AppBarLayout
 class TodoAppBarBehavior(context: Context, attrs: AttributeSet) :
     AppBarLayout.Behavior(context, attrs) {
     // Touch above this y-axis value can open the appBar.
-    private var mCanOpenBottom = 0
+    private var canOpenBottom = 0
 
     // Determines if the appBar can be dragged open or not via direct touch on the appBar.
-    private var mCanDrag = true
+    private var canDrag = true
     private val isPositive = false
 
     init {
@@ -34,7 +34,6 @@ class TodoAppBarBehavior(context: Context, attrs: AttributeSet) :
             override fun canDrag(appBarLayout: AppBarLayout): Boolean {
                 return true
             }
-
         })
     }
 
@@ -46,14 +45,14 @@ class TodoAppBarBehavior(context: Context, attrs: AttributeSet) :
         if (event.action == MotionEvent.ACTION_DOWN) {
             // If appBar is closed. Only allow scrolling in defined area.
             if (child.top <= -child.totalScrollRange) {
-                mCanDrag = event.y < mCanOpenBottom
+                canDrag = event.y < canOpenBottom
             }
         }
         return super.onInterceptTouchEvent(parent, child, event)
     }
 
     fun setCanOpenBottom(bottom: Int) {
-        mCanOpenBottom = bottom
+        canOpenBottom = bottom
     }
 
     companion object {
@@ -67,10 +66,10 @@ class TodoRecyclerView @JvmOverloads constructor(
     defStyle: Int = 0
 ) : RecyclerView(context, attrs, defStyle) {
     private var appBarTracking: AppBarTracking? = null
-    private var mView: View? = null
+    private var view: View? = null
 
     private var current: Int = 0
-    private var mLayoutManager: LinearLayoutManager? = null
+    private var layoutManager: LinearLayoutManager? = null
 
     interface AppBarTracking {
         fun isAppBarIdle(): Boolean
@@ -79,14 +78,14 @@ class TodoRecyclerView @JvmOverloads constructor(
         fun appbaroffset(): Int
     }
 
-    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        if (ev.action != MotionEvent.ACTION_MOVE) {
-            if (appBarTracking!!.isAppBarExpanded()) {
-                current = mLayoutManager!!.findFirstVisibleItemPosition()
-            }
-        }
-        return super.dispatchTouchEvent(ev)
-    }
+//    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+//        if (ev.action != MotionEvent.ACTION_MOVE) {
+//            if (appBarTracking!!.isAppBarExpanded()) {
+//                current = layoutManager!!.findFirstVisibleItemPosition()
+//            }
+//        }
+//        return super.dispatchTouchEvent(ev)
+//    }
 
     override fun dispatchNestedPreScroll(
         dx: Int,
@@ -95,25 +94,21 @@ class TodoRecyclerView @JvmOverloads constructor(
         offsetInWindow: IntArray?,
         type: Int
     ): Boolean {
-
-        if (type == ViewCompat.TYPE_NON_TOUCH && appBarTracking!!.isAppBarIdle()
-            && isNestedScrollingEnabled
+        if (type == ViewCompat.TYPE_NON_TOUCH && appBarTracking!!.isAppBarIdle() &&
+            isNestedScrollingEnabled
         ) {
             if (dy > 0) {
-
                 if (appBarTracking!!.isAppBarExpanded()) {
                     consumed!![1] = dy
                     return true
                 }
             } else {
-
-                mView = mLayoutManager!!.findViewByPosition(appBarTracking!!.appbaroffset())
-                if (mView != null) {
-                    consumed!![1] = dy - mView!!.top + MainActivity.topspace
+                view = layoutManager!!.findViewByPosition(appBarTracking!!.appbaroffset())
+                if (view != null) {
+                    consumed!![1] = dy - view!!.top + MainActivity.topspace
                 }
 
                 return true
-
             }
         }
         if (dy < 0 && type == ViewCompat.TYPE_TOUCH && appBarTracking!!.isAppBarExpanded()) {
@@ -125,18 +120,27 @@ class TodoRecyclerView @JvmOverloads constructor(
 
         if (offsetInWindow != null && !isNestedScrollingEnabled && offsetInWindow[1] != 0) {
             offsetInWindow[1] = 0
-
         }
         return returnValue
     }
 
-
     override fun setLayoutManager(layout: LayoutManager?) {
         super.setLayoutManager(layout)
-        mLayoutManager = layoutManager as LinearLayoutManager
+        layoutManager = layout as LinearLayoutManager
     }
 
     fun setAppBarTracking(tracking: AppBarTracking) {
         appBarTracking = tracking
+    }
+
+    override fun fling(velocityX: Int, velocityY: Int): Boolean {
+        var vY = velocityY
+        if (!appBarTracking!!.isAppBarIdle()) {
+            val vc = ViewConfiguration.get(context)
+            vY = if (vY < 0) -vc.scaledMinimumFlingVelocity
+            else vc.scaledMinimumFlingVelocity
+        }
+
+        return super.fling(velocityX, vY)
     }
 }

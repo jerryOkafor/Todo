@@ -15,6 +15,8 @@ import Dependencies.View
 //https://stackoverflow.com/questions/62712430/import-kotlinx-android-synthetic-failed-android-studio-doesnt-find-it-but-i-c
 //https://issuetracker.google.com/issues/145888144
 //https://developer.android.com/studio/write/java8-support
+//https://pspdfkit.com/blog/2018/moving-your-gradle-build-scripts-to-kotlin/
+//https://proandroiddev.com/sharing-build-logic-with-kotlin-dsl-203274f73013
 
 plugins {
     applyAndroidApplication
@@ -53,7 +55,6 @@ android {
             isMinifyEnabled = false
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
         }
-
     }
 
     @Suppress("UnstableApiUsage")

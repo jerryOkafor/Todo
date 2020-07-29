@@ -44,7 +44,6 @@ android {
             isMinifyEnabled = false
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
         }
-
     }
 
     @Suppress("UnstableApiUsage")

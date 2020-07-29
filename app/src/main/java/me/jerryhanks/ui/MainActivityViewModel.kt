@@ -7,7 +7,6 @@ import kotlinx.coroutines.launch
 import me.jerryhanks.todo.core.di.TodoService
 import timber.log.Timber
 
-
 /**
  * @author jerry on 19/07/2020
  * for Todo

@@ -1,19 +1,20 @@
 package me.jerryhanks.ui
-
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import me.jerryhanks.R
 import me.jerryhanks.nav.Navigable
 import me.jerryhanks.nav.Navigator
 import me.jerryhanks.todo.core.di.Analytics
+import me.jerryhanks.todo.core.ui.BaseActivity
 import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), Navigable {
+class MainActivity : BaseActivity(), Navigable {
     @Inject
     lateinit var analyticsService: Analytics
 
@@ -21,27 +22,24 @@ class MainActivity : AppCompatActivity(), Navigable {
 
     private lateinit var navigator: Navigator
 
+    private val navController by lazy { findNavController(R.id.nav_host_fragment) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_main)
 
         navigator = Navigator(this, this)
 
 //        Timber.d("$navigator")
 
-//        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
-
-
         Timber.d("${analyticsService.analyse("MainActivity", this)}")
 
-        //invoke network call
+        // invoke network call
 //        mainVM.getTodos()
 
         navigator.navigate()
+
+        bottomNavigationView.setupWithNavController(navController)
     }
 
 //    override fun onCreateOptionsMenu(menu: Menu): Boolean {

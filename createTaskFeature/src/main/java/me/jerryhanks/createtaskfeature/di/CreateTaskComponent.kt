@@ -15,7 +15,6 @@ import me.jerryhanks.todo.core.viewmodel.ViewModelFactoryModule
 import me.jerryhanks.todo.core.viewmodel.ViewModelKey
 import javax.inject.Singleton
 
-
 /**
  * @author jerry on 19/07/2020
  * for Todo

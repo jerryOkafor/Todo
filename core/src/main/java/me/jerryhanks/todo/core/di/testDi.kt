@@ -12,7 +12,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import javax.inject.Inject
 
-
 /**
  * @author jerry on 19/07/2020
  * for Todo
@@ -37,7 +36,6 @@ class AnalyticsAdapter @Inject constructor() :
     }
 }
 
-
 @Module
 @InstallIn(ActivityComponent::class)
 abstract class AnalyticsModule {
@@ -50,7 +48,7 @@ abstract class AnalyticsModule {
 @InstallIn(ApplicationComponent::class)
 object NetworkModule {
 
-    //You can Gson and okHttp Client instance here
+    // You can Gson and okHttp Client instance here
     @Provides
     fun provideTodoService(): TodoService {
         return Retrofit.Builder()

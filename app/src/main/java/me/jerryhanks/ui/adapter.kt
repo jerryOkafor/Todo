@@ -10,7 +10,6 @@ import kotlinx.android.extensions.LayoutContainer
 import me.jerryhanks.R
 import me.jerryhanks.todo.core.data.db.Todo
 
-
 /**
  * @author jerry on 25/07/2020
  * for Todo
@@ -23,7 +22,7 @@ class TodoAdapter : ListAdapter<Todo, TodoAdapter.TodoViewHolder>(DIFF_CALLBACK)
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-        //do nothing
+        // do nothing
     }
 
     companion object {
@@ -35,18 +34,14 @@ class TodoAdapter : ListAdapter<Todo, TodoAdapter.TodoViewHolder>(DIFF_CALLBACK)
             override fun areContentsTheSame(oldItem: Todo, newItem: Todo): Boolean {
                 return oldItem == newItem
             }
-
         }
     }
-
 
     inner class TodoViewHolder(override val containerView: View) :
         RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        fun bind(todo: Todo) {
-
-        }
+//        fun bind(todo: Todo) {
+//
+//        }
     }
-
-
 }

@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import dagger.MapKey
 import kotlin.reflect.KClass
 
-
 /**
  * @author jerry on 29/01/2020
  * for MyMintApp

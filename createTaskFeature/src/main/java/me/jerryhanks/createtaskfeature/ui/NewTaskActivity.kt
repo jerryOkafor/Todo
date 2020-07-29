@@ -1,19 +1,21 @@
 package me.jerryhanks.createtaskfeature.ui
 
 import android.os.Bundle
+import android.transition.Slide
+import android.view.Window
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.EntryPointAccessors
 import me.jerryhanks.createtaskfeature.R
 import me.jerryhanks.createtaskfeature.di.DaggerCreateTaskComponent
 import me.jerryhanks.di.CreateTaskModuleDependencies
 import me.jerryhanks.todo.core.di.TodoService
+import me.jerryhanks.todo.core.ui.BaseActivity
 import javax.inject.Inject
+import me.jerryhanks.todo.core.R as RCore
 
-class NewTaskActivity : AppCompatActivity() {
+class NewTaskActivity : BaseActivity() {
 
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProvider.Factory
@@ -25,12 +27,24 @@ class NewTaskActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        with(window) {
+            requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+            enterTransition = Slide()
+            exitTransition = Slide()
+        }
+
         setContentView(R.layout.activity_new_task)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(
+                ContextCompat.getDrawable(
+                    this@NewTaskActivity,
+                    RCore.drawable.ic_clear
+                )
+            )
         }
 
         DaggerCreateTaskComponent.builder()
@@ -44,10 +58,12 @@ class NewTaskActivity : AppCompatActivity() {
             .build()
             .inject(this)
 
-
-        //invoke
+        // invoke
         newTaskViewModel.getTodos()
     }
 
-
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return false
+    }
 }

@@ -6,7 +6,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-
 /**
  * @author jerry on 17/07/2020
  * for Todo
@@ -22,9 +21,7 @@ abstract class TodoDB : RoomDatabase() {
         private var INSTANCE: TodoDB? = null
 
         fun getInstance(context: Context, useInMemory: Boolean = false): TodoDB {
-
             val dbBuilder = if (useInMemory) {
-
                 Room.inMemoryDatabaseBuilder(context, TodoDB::class.java).allowMainThreadQueries()
             } else {
                 Room.databaseBuilder(
@@ -34,7 +31,7 @@ abstract class TodoDB : RoomDatabase() {
                 ).addCallback(object : Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
-                        //Db created
+                        // Db created
                     }
                 }).fallbackToDestructiveMigration()
             }

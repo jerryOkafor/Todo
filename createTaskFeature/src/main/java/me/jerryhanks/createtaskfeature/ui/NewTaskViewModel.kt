@@ -7,7 +7,6 @@ import me.jerryhanks.todo.core.di.TodoService
 import timber.log.Timber
 import javax.inject.Inject
 
-
 /**
  * @author jerry on 19/07/2020
  * for Todo

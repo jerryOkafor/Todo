@@ -4,7 +4,6 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
-
 /**
  * @author jerry on 17/07/2020
  * for Todo

@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/timelineFragment1"
+    <item
+        android:id="@+id/homeFragment"
         android:enabled="true"
         android:icon="@drawable/ic_action_calendar_month"
         android:title="" />
 
-    <item android:id="@+id/timelineFragment2"
-        android:enabled="true"
-        android:icon="@drawable/ic_action_calendar_month"
-        android:title="" />
+<!--    <item-->
+<!--        android:id="@+id/timelineFragment2"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_action_calendar_month"-->
+<!--        android:title="" />-->
 
-    <item android:id="@+id/timelineFragment3"
+    <item
+        android:id="@+id/newTaskActivity"
         android:enabled="true"
         android:icon="@drawable/ic_add_circle"
         android:title="" />
 
-    <item android:id="@+id/timelineFragment4"
-        android:enabled="true"
-        android:icon="@drawable/ic_action_calendar_month"
-        android:title="" />
+<!--    <item-->
+<!--        android:id="@+id/timelineFragment4"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_action_calendar_month"-->
+<!--        android:title="" />-->
 
-    <item android:id="@+id/timelineFragment5"
+    <item
+        android:id="@+id/accountFragment"
         android:enabled="true"
         android:icon="@drawable/ic_action_calendar_month"
         android:title="" />

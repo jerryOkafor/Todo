@@ -13,5 +13,4 @@ abstract class ViewModelFactoryModule {
      * */
     @Binds
     abstract fun provideViewModelFactory(factory: TodoViewModelFactory): ViewModelProvider.Factory
-
 }

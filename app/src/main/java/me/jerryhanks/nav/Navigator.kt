@@ -1,6 +1,5 @@
 package me.jerryhanks.nav
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -14,12 +13,10 @@ import me.jerryhanks.R
 import me.jerryhanks.todo.timeline.nav.TimelineNavigator
 import timber.log.Timber
 
-
 /**
  * @author jerry on 19/07/2020
  * for Todo
  **/
-
 
 interface Navigable
 
@@ -50,7 +47,6 @@ class Navigator(private val navigable: Navigable, lifecycleOwner: LifecycleOwner
     init {
         lifecycleOwner.lifecycle.addObserver(navLifecycleObserver)
     }
-
 
     fun navigate() {
         Timber.d("$navController")

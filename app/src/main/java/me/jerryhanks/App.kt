@@ -4,7 +4,6 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
-
 /**
  * @author jerry on 17/07/2020
  * for Todo

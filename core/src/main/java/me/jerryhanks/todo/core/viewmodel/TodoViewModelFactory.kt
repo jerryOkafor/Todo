@@ -6,7 +6,6 @@ import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
 
-
 /**
  * @author jerry on 19/07/2020
  * for Todo
@@ -37,6 +36,5 @@ constructor(private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcard
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
-
     }
 }

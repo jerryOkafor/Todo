@@ -1,4 +1,6 @@
+import org.gradle.api.Project
 import org.gradle.api.artifacts.dsl.RepositoryHandler
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.kotlin
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
@@ -21,10 +23,6 @@ fun RepositoryHandler.applyDefault() {
 }
 
 /**Plugin Extensions*/
-//Apply ktLint
-val PluginDependenciesSpec.applyKtLint: PluginDependencySpec
-    get() = id("org.jlleitschuh.gradle.ktlint")
-
 //Apply Android
 val PluginDependenciesSpec.applyAndroidApplication: PluginDependencySpec
     get() = id("com.android.application")
@@ -61,5 +59,12 @@ val PluginDependenciesSpec.applyNavSafeArgs: PluginDependencySpec
 //Apply kotlin kapt plugin
 val PluginDependenciesSpec.applyKotlinKapt: PluginDependencySpec
     get() = kotlin("kapt")
+
+//Static analysis tools
+val Project.applyDetekt
+    get() = apply(plugin = "io.gitlab.arturbosch.detekt")
+
+val Project.applyKtlint
+    get() = apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
 
