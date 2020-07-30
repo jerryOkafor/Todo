@@ -55,6 +55,6 @@ jobs:
     runs-on: ubuntu-18.04
     needs: [setup,ktlint,detekt,test]
     steps:
-      - actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: Build Project
         run: ./gradlew assembleDebug
