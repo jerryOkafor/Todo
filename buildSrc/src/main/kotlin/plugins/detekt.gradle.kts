@@ -18,6 +18,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
+@Suppress("UnusedPrivateMember")
 subprojects {
     apply(plugin = "io.gitlab.arturbosch.detekt")
 

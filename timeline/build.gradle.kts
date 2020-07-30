@@ -3,7 +3,7 @@ import Dependencies.AndroidX
 import Dependencies.Hilt
 import Dependencies.Kotlin
 import Dependencies.ProjectModule.core
-import Dependencies.Retrofit
+import Dependencies.Network
 import Dependencies.Test
 import Dependencies.Utils
 import Dependencies.View
@@ -82,7 +82,7 @@ dependencies {
     kapt(Hilt.hiltCompiler)
 
     /**Retrofit*/
-    Retrofit.components.forEach { implementation(it) }
+    Network.components.forEach { implementation(it) }
 
     /**Test*/
     Test.components.forEach { testImplementation(it) }

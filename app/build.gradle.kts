@@ -1,12 +1,12 @@
 import Dependencies.AndroidTest
 import Dependencies.AndroidX
-import Dependencies.Desugaring
+import Dependencies.Desugar
 import Dependencies.Hilt
 import Dependencies.Kotlin
 import Dependencies.Navigation
 import Dependencies.ProjectModule.core
 import Dependencies.ProjectModule.timeline
-import Dependencies.Retrofit
+import Dependencies.Network
 import Dependencies.Test
 import Dependencies.Utils
 import Dependencies.View
@@ -71,7 +71,7 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    coreLibraryDesugaring(Desugaring.desugaring)
+    coreLibraryDesugaring(Desugar.desugaring)
 
     /**Modules*/
     implementation(project(core))
@@ -104,7 +104,7 @@ dependencies {
     kapt(Hilt.hiltCompiler)
 
     /**Retrofit*/
-    Retrofit.components.forEach { implementation(it) }
+    Network.components.forEach { implementation(it) }
 
     /**Test*/
     Test.components.forEach { testImplementation(it) }

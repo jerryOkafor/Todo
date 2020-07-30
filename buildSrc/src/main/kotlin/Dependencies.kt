@@ -26,7 +26,7 @@ object Dependencies {
         const val room = "2.2.5"
     }
 
-    object Desugaring : Libraries {
+    object Desugar : Libraries {
         object Version {
             const val desugar = "1.0.9"
         }
@@ -83,7 +83,7 @@ object Dependencies {
     }
 
 
-    object Retrofit : Libraries {
+    object Network : Libraries {
         object Versions {
             const val retrofit = "2.9.0"
         }
