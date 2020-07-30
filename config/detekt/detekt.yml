@@ -62,6 +62,7 @@ naming:
     variablePattern: '[a-z][A-Za-z0-9]*'
     privateVariablePattern: '(_)?[a-z][A-Za-z0-9]*'
     excludeClassPattern: '$^'
+  #Added
   MatchingDeclarationName:
     active: false
 
@@ -143,6 +144,8 @@ style:
     active: true
   UtilityClassWithPublicConstructor:
     active: true
+
+  #Added
   NewLineAtEndOfFile:
     active: false
   ReturnCount:
