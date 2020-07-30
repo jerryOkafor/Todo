@@ -17,6 +17,7 @@ import Dependencies.View
 //https://developer.android.com/studio/write/java8-support
 //https://pspdfkit.com/blog/2018/moving-your-gradle-build-scripts-to-kotlin/
 //https://proandroiddev.com/sharing-build-logic-with-kotlin-dsl-203274f73013
+//https://github.community/t/how-do-i-specify-job-dependency-running-in-another-workflow/16482
 
 plugins {
     applyAndroidApplication

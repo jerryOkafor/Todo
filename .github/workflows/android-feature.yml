@@ -5,6 +5,10 @@ name: Android Feature Branch CI
 #3. Run Unit And Instrumentation tests
 #4. Run tes coverage
 
+#jobs:
+#  deploy:
+#    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+
 on:
   push:
     branches:
