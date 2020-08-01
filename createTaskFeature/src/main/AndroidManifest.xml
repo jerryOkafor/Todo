@@ -17,7 +17,7 @@
         <activity
             android:name=".ui.NewTaskActivity"
             android:label="@string/title_activity_new_task"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

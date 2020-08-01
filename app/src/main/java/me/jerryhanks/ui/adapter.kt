@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import me.jerryhanks.R
-import me.jerryhanks.todo.core.data.db.Todo
+import me.jerryhanks.di.Todo
 
 /**
  * @author jerry on 25/07/2020
@@ -17,7 +17,8 @@ import me.jerryhanks.todo.core.data.db.Todo
 
 class TodoAdapter : ListAdapter<Todo, TodoAdapter.TodoViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
-        val rootView = LayoutInflater.from(parent.context).inflate(R.layout.item_todo, parent, false)
+        val rootView =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_todo, parent, false)
         return TodoViewHolder(rootView)
     }
 

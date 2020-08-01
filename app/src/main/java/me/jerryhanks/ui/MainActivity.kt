@@ -1,15 +1,14 @@
 package me.jerryhanks.ui
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import me.jerryhanks.R
+import me.jerryhanks.di.Analytics
 import me.jerryhanks.nav.Navigable
 import me.jerryhanks.nav.Navigator
-import me.jerryhanks.todo.core.di.Analytics
 import me.jerryhanks.todo.core.ui.BaseActivity
 import timber.log.Timber
 import javax.inject.Inject

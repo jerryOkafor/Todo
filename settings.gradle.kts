@@ -1,7 +1,7 @@
+include(":timeline")
+include(":core")
 include(
-    ":timeline",
     ":dataReportFeature",
-    ":core",
     ":createTaskFeature",
     ":app"
 )

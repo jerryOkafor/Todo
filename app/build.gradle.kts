@@ -4,9 +4,9 @@ import Dependencies.Desugar
 import Dependencies.Hilt
 import Dependencies.Kotlin
 import Dependencies.Navigation
+import Dependencies.Network
 import Dependencies.ProjectModule.core
 import Dependencies.ProjectModule.timeline
-import Dependencies.Network
 import Dependencies.Test
 import Dependencies.Utils
 import Dependencies.View
@@ -18,54 +18,22 @@ import Dependencies.View
 //https://pspdfkit.com/blog/2018/moving-your-gradle-build-scripts-to-kotlin/
 //https://proandroiddev.com/sharing-build-logic-with-kotlin-dsl-203274f73013
 //https://github.community/t/how-do-i-specify-job-dependency-running-in-another-workflow/16482
+//https://medium.com/@ranjeetsinha/jacoco-with-kotlin-dsl-f1f067e42cd0
+//https://developer.android.com/studio/test/command-line
+//https://github.com/dalvin/AndroidTestsWithDagger2
 
 plugins {
-    applyAndroidApplication
-    applyKotlinAndroid
-    applyKotlinAndroidExtension
+    plugins.`common-android`
     applyKotlinKapt
     applyDaggerHilt
+    plugins.`jacoco-report`
 }
 
+
 android {
-    compileSdkVersion(Config.Version.compileSdkVersion)
-    defaultConfig {
-        applicationId = Config.Android.applicationId
-        minSdkVersion(Config.Version.minSdkVersion)
-        targetSdkVersion(Config.Version.targetSdkVersion)
-        versionCode = Config.Version.versionCode
-        versionName = Config.Version.versionName
-        testInstrumentationRunner = Config.Android.testInstrumentationRunner
-    }
-
-    androidExtensions {
-        isExperimental = true
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-
-    buildTypes {
-        named("debug") {
-            isMinifyEnabled = false
-            proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
-        }
-
-        named("release") {
-            isMinifyEnabled = false
-            proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
-        }
-    }
-
-    @Suppress("UnstableApiUsage")
-    compileOptions {
-        // Flag to enable support for the new language APIs
-        coreLibraryDesugaringEnabled = true
-
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
+    useLibrary("android.test.runner")
+    useLibrary("android.test.base")
+    useLibrary("android.test.mock")
 
     dynamicFeatures = mutableSetOf(":createTaskFeature", ":dataReportFeature")
 }
@@ -73,12 +41,12 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     coreLibraryDesugaring(Desugar.desugaring)
+    implementation(Kotlin.stdlib)
 
     /**Modules*/
     implementation(project(core))
     implementation(project(timeline))
 
-    implementation(Kotlin.stdlib)
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.lifeCycleCommon)
@@ -112,4 +80,7 @@ dependencies {
 
     /**Android Test*/
     AndroidTest.components.forEach { androidTestImplementation(it) }
+    androidTestImplementation("androidx.test:core:1.2.0")
+    androidTestImplementation("androidx.test:runner:1.2.0")
+    androidTestUtil("androidx.test:orchestrator:1.2.0")
 }

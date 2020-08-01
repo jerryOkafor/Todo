@@ -22,8 +22,6 @@ import kotlinx.android.synthetic.main.calendar_day_legend.*
 import kotlinx.android.synthetic.main.fragment_first.*
 import me.jerryhanks.R
 import me.jerryhanks.nav.Navigable
-import me.jerryhanks.nav.Navigator
-import me.jerryhanks.todo.core.data.db.Todo
 import timber.log.Timber
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -224,6 +222,6 @@ class FirstFragment : Fragment(), Navigable {
         todoRecycler.layoutManager = layoutManager
         todoRecycler.adapter = todoAdapter
 
-        todoAdapter.submitList((0..30).map { Todo(id = it.toLong()) })
+//        todoAdapter.submitList((0..30).map { Todo(id = it.toLong()) })
     }
 }

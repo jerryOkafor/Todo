@@ -87,7 +87,7 @@ class SlidingPanelBehavior(context: Context?, attrs: AttributeSet?) :
         child: View,
         event: MotionEvent
     ): Boolean {
-        val action = event.action
+//        val action = event.action
         if (event.action != MotionEvent.ACTION_DOWN) { // Only want "down" events
             return false
         }

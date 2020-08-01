@@ -49,9 +49,11 @@ object Dependencies {
         object Versions {
             const val coreKtx = "1.3.0"
             const val lifeCycle = "2.3.0-alpha03"
+            const val appCompat = "1.1.0"
         }
 
         const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+        const val appComppat = "androidx.appcompat:appcompat:${Versions.appCompat}"
         const val lifeCycleCommon =
             "androidx.lifecycle:lifecycle-common-java8:${Versions.lifeCycle}"
         const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifeCycle}"
@@ -62,7 +64,7 @@ object Dependencies {
         const val roomCompiler = "androidx.room:room-compiler:${Dependencies.Versions.room}"
         const val roomKtx = "androidx.room:room-ktx:${Dependencies.Versions.room}"
 
-        override val components = listOf(coreKtx, lifeCycleCommon, viewModel)
+        override val components = listOf(coreKtx, lifeCycleCommon, viewModel,appComppat)
     }
 
     object Hilt : Libraries {
@@ -158,7 +160,7 @@ object Dependencies {
         const val junit = "junit:junit:${Versions.junit}"
         const val rootTesting = "androidx.room:room-testing:${Dependencies.Versions.room}"
 
-        override val components = listOf(junit, rootTesting)
+        override val components = listOf(junit)
     }
 
     object AndroidTest : Libraries {

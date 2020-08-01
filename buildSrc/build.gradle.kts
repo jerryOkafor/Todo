@@ -19,6 +19,7 @@ object Plugins {
         const val daggerHiltAndroid: String = "2.28-alpha"
         const val ktLint = "9.3.0"
         const val detekt = "1.10.0"
+        const val jacoco = "0.8.5"
     }
 
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
@@ -29,6 +30,7 @@ object Plugins {
         "com.google.dagger:hilt-android-gradle-plugin:${Version.daggerHiltAndroid}"
     const val ktLint = "org.jlleitschuh.gradle:ktlint-gradle:${Version.ktLint}"
     const val detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${Version.detekt}"
+    const val jacoco = "org.jacoco:org.jacoco.core:${Version.jacoco}"
 }
 
 dependencies {
@@ -38,4 +40,5 @@ dependencies {
     implementation(Plugins.daggerHilt)
     implementation(Plugins.ktLint)
     implementation(Plugins.detekt)
+    implementation(Plugins.jacoco)
 }

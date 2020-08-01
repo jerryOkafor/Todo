@@ -1,6 +1,4 @@
-import org.gradle.api.Project
 import org.gradle.api.artifacts.dsl.RepositoryHandler
-import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.kotlin
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
@@ -35,7 +33,6 @@ val PluginDependenciesSpec.applyKotlinAndroid: PluginDependencySpec
 val PluginDependenciesSpec.applyKotlinAndroidExtension: PluginDependencySpec
     get() = kotlin("android.extensions")
 
-
 //Apply Library
 val PluginDependenciesSpec.applyLibrary: PluginDependencySpec
     get() = id("com.android.library")
@@ -48,6 +45,7 @@ val PluginDependenciesSpec.applyKotlinLibrary: PluginDependencySpec
 val PluginDependenciesSpec.applyDynamicFeature: PluginDependencySpec
     get() = id("com.android.dynamic-feature")
 
+
 //Apply dagger hilt
 val PluginDependenciesSpec.applyDaggerHilt: PluginDependencySpec
     get() = id("dagger.hilt.android.plugin")
@@ -59,12 +57,4 @@ val PluginDependenciesSpec.applyNavSafeArgs: PluginDependencySpec
 //Apply kotlin kapt plugin
 val PluginDependenciesSpec.applyKotlinKapt: PluginDependencySpec
     get() = kotlin("kapt")
-
-//Static analysis tools
-val Project.applyDetekt
-    get() = apply(plugin = "io.gitlab.arturbosch.detekt")
-
-val Project.applyKtlint
-    get() = apply(plugin = "org.jlleitschuh.gradle.ktlint")
-
 

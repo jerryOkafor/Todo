@@ -10,7 +10,6 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import me.jerryhanks.R
-import me.jerryhanks.todo.timeline.nav.TimelineNavigator
 import timber.log.Timber
 
 /**
@@ -20,8 +19,7 @@ import timber.log.Timber
 
 interface Navigable
 
-class Navigator(private val navigable: Navigable, lifecycleOwner: LifecycleOwner) :
-    TimelineNavigator {
+class Navigator(private val navigable: Navigable, lifecycleOwner: LifecycleOwner) {
     private var navController: NavController? = null
 
     private val navLifecycleObserver = object : LifecycleObserver {

@@ -1,4 +1,4 @@
-package me.jerryhanks.todo.core.di
+package me.jerryhanks.di
 
 import android.content.Context
 import dagger.Binds

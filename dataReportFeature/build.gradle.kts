@@ -10,43 +10,18 @@ import Dependencies.Test
 import Dependencies.View
 
 plugins {
-    applyDynamicFeature
-    applyKotlinAndroid
-    applyKotlinAndroidExtension
+    plugins.`common-dfm`
     applyKotlinKapt
     applyDaggerHilt
+    plugins.`jacoco-report`
 }
 
-android {
-    compileSdkVersion(Config.Version.compileSdkVersion)
-    defaultConfig {
-        minSdkVersion(Config.Version.minSdkVersion)
-        targetSdkVersion(Config.Version.targetSdkVersion)
-        versionCode = Config.Version.versionCode
-        versionName = Config.Version.versionName
-        testInstrumentationRunner = Config.Android.testInstrumentationRunner
-    }
-
-    androidExtensions {
-        isExperimental = true
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-
-    @Suppress("UnstableApiUsage")
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-}
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     implementation(project(app))
-    implementation(project(core))
+//    implementation(project(core))
     implementation(Kotlin.stdlib)
 
     implementation(AndroidX.coreKtx)

@@ -1,4 +1,4 @@
-package me.jerryhanks.todo.core.viewmodel
+package me.jerryhanks.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

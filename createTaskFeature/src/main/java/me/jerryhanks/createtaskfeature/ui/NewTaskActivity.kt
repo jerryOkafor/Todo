@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.transition.Slide
 import android.view.Window
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.EntryPointAccessors
 import me.jerryhanks.createtaskfeature.R
 import me.jerryhanks.createtaskfeature.di.DaggerCreateTaskComponent
 import me.jerryhanks.di.CreateTaskModuleDependencies
-import me.jerryhanks.todo.core.di.TodoService
+import me.jerryhanks.di.TodoService
 import me.jerryhanks.todo.core.ui.BaseActivity
 import javax.inject.Inject
-import me.jerryhanks.todo.core.R as RCore
 
 class NewTaskActivity : BaseActivity() {
 
@@ -39,12 +37,12 @@ class NewTaskActivity : BaseActivity() {
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(
-                ContextCompat.getDrawable(
-                    this@NewTaskActivity,
-                    RCore.drawable.ic_clear
-                )
-            )
+//            setHomeAsUpIndicator(
+//                ContextCompat.getDrawable(
+//                    this@NewTaskActivity,
+//                    R.drawable.ic_close
+//                )
+//            )
         }
 
         DaggerCreateTaskComponent.builder()
