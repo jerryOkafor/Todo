@@ -21,7 +21,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     implementation(project(app))
-//    implementation(project(core))
+    implementation(project(core))
     implementation(Kotlin.stdlib)
 
     implementation(AndroidX.coreKtx)

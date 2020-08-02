@@ -6,11 +6,11 @@ import android.view.Window
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.EntryPointAccessors
+import me.jerryhanks.core.ui.BaseActivity
 import me.jerryhanks.createtaskfeature.R
 import me.jerryhanks.createtaskfeature.di.DaggerCreateTaskComponent
 import me.jerryhanks.di.CreateTaskModuleDependencies
-import me.jerryhanks.di.TodoService
-import me.jerryhanks.todo.core.ui.BaseActivity
+import me.jerryhanks.core.di.TodoService
 import javax.inject.Inject
 
 class NewTaskActivity : BaseActivity() {

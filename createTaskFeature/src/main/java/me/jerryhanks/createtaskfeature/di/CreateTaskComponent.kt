@@ -11,8 +11,8 @@ import dagger.multibindings.IntoMap
 import me.jerryhanks.createtaskfeature.ui.NewTaskActivity
 import me.jerryhanks.createtaskfeature.ui.NewTaskViewModel
 import me.jerryhanks.di.CreateTaskModuleDependencies
-import me.jerryhanks.di.ViewModelFactoryModule
-import me.jerryhanks.di.ViewModelKey
+import me.jerryhanks.core.viewmodel.ViewModelFactoryModule
+import me.jerryhanks.core.viewmodel.ViewModelKey
 import javax.inject.Singleton
 
 /**

@@ -6,10 +6,10 @@ import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import me.jerryhanks.R
-import me.jerryhanks.di.Analytics
+import me.jerryhanks.core.ui.BaseActivity
+import me.jerryhanks.core.di.Analytics
 import me.jerryhanks.nav.Navigable
 import me.jerryhanks.nav.Navigator
-import me.jerryhanks.todo.core.ui.BaseActivity
 import timber.log.Timber
 import javax.inject.Inject
 

@@ -1,7 +1,10 @@
 import Dependencies.AndroidTest
 import Dependencies.AndroidX
+import Dependencies.Hilt
 import Dependencies.Kotlin
+import Dependencies.Network
 import Dependencies.Test
+import Dependencies.View
 
 plugins {
     plugins.`common-library`
@@ -12,13 +15,31 @@ plugins {
 
 
 dependencies {
-
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Kotlin.stdlib)
 
-
     implementation(AndroidX.coreKtx)
+    implementation(AndroidX.lifeCycleCommon)
+    implementation(AndroidX.liveData)
+    implementation(AndroidX.viewModel)
     implementation(AndroidX.appComppat)
+
+    implementation(View.material)
+    implementation(View.constraintLayout)
+
+    /**Hilt*/
+    implementation(Hilt.hiltAndroid)
+    implementation(Hilt.hiltViewModel)
+    kapt(Hilt.hiltAndroidCompiler)
+    kapt(Hilt.hiltCompiler)
+
+    /**Room*/
+    implementation(AndroidX.roomRuntime )
+    implementation(AndroidX.roomKtx)
+    kapt(AndroidX.roomCompiler)
+
+    /**Retrofit*/
+    Network.components.forEach { implementation(it) }
 
     implementation(Test.junit)
 

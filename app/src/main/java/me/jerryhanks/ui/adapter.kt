@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import me.jerryhanks.R
-import me.jerryhanks.di.Todo
+import me.jerryhanks.core.data.db.Todo
 
 /**
  * @author jerry on 25/07/2020

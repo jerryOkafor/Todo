@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
@@ -18,11 +19,10 @@ import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
-import kotlinx.android.synthetic.main.calendar_day_legend.*
 import kotlinx.android.synthetic.main.fragment_first.*
 import me.jerryhanks.R
+import me.jerryhanks.core.data.db.Todo
 import me.jerryhanks.nav.Navigable
-import timber.log.Timber
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.YearMonth
@@ -63,7 +63,7 @@ class FirstFragment : Fragment(), Navigable {
     private var appBarMaxOffset = 0
     private var isExpanded = false
 
-    private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM")
+    private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM yyyy")
 
     private val layoutManager by lazy {
         LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -71,42 +71,37 @@ class FirstFragment : Fragment(), Navigable {
 
     private val abbBarOffsetChangeListener =
         AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            Timber.d("Offset: $verticalOffset")
-            if (appBarOffset != verticalOffset) {
-                appBarOffset = verticalOffset
-                appBarMaxOffset = -appBarLayout.totalScrollRange
+            appBarOffset = verticalOffset
+            val totalScrollRange = appBarLayout.totalScrollRange
+            val progress =
+                (-verticalOffset).toFloat() / totalScrollRange.toFloat()
 
-                val totalScrollRange = appBarLayout.totalScrollRange
-                val progress =
-                    (-verticalOffset).toFloat() / totalScrollRange.toFloat()
+            //mArrowImageView.setRotation(-progress * 180)
 
-                arrowImageView.rotation = progress * 180
-                Timber.d("Progress: $progress")
+            isExpanded = verticalOffset == 0
+            isAppBarIdle = appBarOffset >= 0 || appBarOffset <= appBarMaxOffset
+            val alpha = (-verticalOffset).toFloat() / totalScrollRange
 
-                isExpanded = verticalOffset == 0
-                isAppBarIdle = appBarOffset >= 0 || appBarOffset <= appBarMaxOffset
+            smallLayout.alpha = alpha
+            largeLayout.alpha = 1 - alpha
 
-                if (appBarOffset == -appBarLayout.totalScrollRange) {
-                    isAppBarClosed = true
-                    toolbarViews.visibility = View.VISIBLE
-                    setExpandAndCollapseEnabled(false)
-                } else {
-                    setExpandAndCollapseEnabled(true)
-//                    toolbarViews.visibility = View.INVISIBLE
-                }
-                if (appBarOffset == 0) {
+            // If the small layout is not visible, make it officially invisible so
+            // it can't receive clicks.
 
-                    toolbarViews.visibility = View.INVISIBLE
+            // If the small layout is not visible, make it officially invisible so
+            // it can't receive clicks.
+            if (alpha == 0f) {
+                smallLayout.visibility = View.INVISIBLE
+                largeLayout.visibility = View.VISIBLE
+            } else if (smallLayout.visibility == View.INVISIBLE) {
+                smallLayout.visibility = View.VISIBLE
+                largeLayout.visibility = View.INVISIBLE
+            }
 
-                    if (isAppBarClosed) {
-                        todoRecycler.stopScroll()
-                        isAppBarClosed = false
-                        expandedFirst = layoutManager.findFirstVisibleItemPosition()
-
-                        MainActivity.topspace =
-                            layoutManager.findViewByPosition(layoutManager.findFirstVisibleItemPosition())!!.top
-                    }
-                }
+            if (alpha == 1f) {
+                largeLayout.visibility = View.INVISIBLE
+            } else if (largeLayout.visibility == View.INVISIBLE) {
+                largeLayout.visibility = View.VISIBLE
             }
         }
 
@@ -116,7 +111,7 @@ class FirstFragment : Fragment(), Navigable {
         }
     }
 
-    private val abbBarTracking = object : TodoRecyclerView.AppBarTracking {
+    private val aappBarTracking = object : TodoRecyclerView.AppBarTracking {
         override fun isAppBarIdle(): Boolean {
             return isAppBarIdle
         }
@@ -169,9 +164,14 @@ class FirstFragment : Fragment(), Navigable {
         }
 
         appBarLayout.post {
+            appBarMaxOffset = -appBarLayout.totalScrollRange
+
+            val layoutParam = (appBarLayout.layoutParams as CoordinatorLayout.LayoutParams)
+            (layoutParam.behavior as? TodoAppBarBehavior)?.setCanOpenBottom(toolbar.height)
         }
 
         appBarLayout.addOnOffsetChangedListener(abbBarOffsetChangeListener)
+        setExpandAndCollapseEnabled(false)
 
         arrowImageView.setOnClickListener {
             isExpanded = !isExpanded
@@ -217,11 +217,11 @@ class FirstFragment : Fragment(), Navigable {
     }
 
     private fun setupRecyclerView() {
-        todoRecycler.setAppBarTracking(abbBarTracking)
+        todoRecycler.setAppBarTracking(aappBarTracking)
         todoAdapter = TodoAdapter()
         todoRecycler.layoutManager = layoutManager
         todoRecycler.adapter = todoAdapter
 
-//        todoAdapter.submitList((0..30).map { Todo(id = it.toLong()) })
+        todoAdapter.submitList((0..30).map { Todo(id = it.toLong()) })
     }
 }

@@ -1,4 +1,4 @@
-package me.jerryhanks.todo.core.ui
+package me.jerryhanks.core.ui
 
 import android.os.Bundle
 import android.os.PersistableBundle

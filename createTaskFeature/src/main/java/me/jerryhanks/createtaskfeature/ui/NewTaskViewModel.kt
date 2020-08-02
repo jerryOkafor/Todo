@@ -3,7 +3,7 @@ package me.jerryhanks.createtaskfeature.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import me.jerryhanks.di.TodoService
+import me.jerryhanks.core.di.TodoService
 import timber.log.Timber
 import javax.inject.Inject
 

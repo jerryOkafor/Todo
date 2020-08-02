@@ -1,4 +1,4 @@
-package me.jerryhanks.todo.core.viewmodel
+package me.jerryhanks.core.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

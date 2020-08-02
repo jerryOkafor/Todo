@@ -1,10 +1,9 @@
-package me.jerryhanks.di
+package me.jerryhanks.core.viewmodel
 
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.migration.DisableInstallInCheck
-import me.jerryhanks.todo.core.viewmodel.TodoViewModelFactory
 
 @Module
 @DisableInstallInCheck

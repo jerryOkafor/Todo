@@ -48,9 +48,9 @@ class TodoAppBarBehavior(context: Context, attrs: AttributeSet) :
         return super.onInterceptTouchEvent(parent, child, event)
     }
 
-//    fun setCanOpenBottom(bottom: Int) {
-//        canOpenBottom = bottom
-//    }
+    fun setCanOpenBottom(bottom: Int) {
+        canOpenBottom = bottom
+    }
 
 //    companion object {
 //        private const val TOP_CHILD_FLING_THRESHOLD = 3
