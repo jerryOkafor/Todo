@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="me.jerryhanks.ui.FirstFragment"
+        android:name="me.jerryhanks.todo.ui.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first"/>
     <fragment
         android:id="@+id/accountFragment"
-        android:name="me.jerryhanks.ui.SecondFragment"
+        android:name="me.jerryhanks.todo.ui.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second"/>
     <fragment
         android:id="@+id/timelineFragment"
-        android:name="me.jerryhanks.todo.timeline.TimelineFragment"
+        android:name="me.todo.todo.timeline.TimelineFragment"
         android:label="TimelineFragment"
         tools:layout="@layout/timeline_fragment" />
     <activity
         android:id="@+id/newTaskActivity"
-        android:name="me.jerryhanks.createtaskfeature.ui.NewTaskActivity"
+        android:name="me.todo.createtaskfeature.ui.NewTaskActivity"
         android:label="activity_new_task"
         app:moduleName="createTaskFeature"
         tools:layout="@layout/activity_new_task" />

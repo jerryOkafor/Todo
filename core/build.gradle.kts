@@ -17,6 +17,8 @@ plugins {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Kotlin.stdlib)
+    implementation(Kotlin.coroutineCore)
+    implementation(Kotlin.coroutineAndroid)
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.lifeCycleCommon)
@@ -34,15 +36,19 @@ dependencies {
     kapt(Hilt.hiltCompiler)
 
     /**Room*/
-    implementation(AndroidX.roomRuntime )
+    implementation(AndroidX.roomRuntime)
     implementation(AndroidX.roomKtx)
     kapt(AndroidX.roomCompiler)
 
     /**Retrofit*/
     Network.components.forEach { implementation(it) }
 
-    implementation(Test.junit)
+    /**Tests*/
+    testImplementation(Test.junit)
+    testImplementation(Test.roomTesting)
+    testImplementation(Kotlin.coroutineTest)
 
+    /**Android Test*/
     androidTestImplementation(AndroidTest.testExtension)
     androidTestImplementation(AndroidTest.espresso)
 

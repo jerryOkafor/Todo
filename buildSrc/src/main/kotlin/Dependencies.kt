@@ -26,6 +26,22 @@ object Dependencies {
         const val room = "2.2.5"
     }
 
+    object PlayServices : Libraries {
+        object Versions {
+            const val playServicesAuth = "18.1.0"
+            const val apiClient = "1.22.0"
+            const val apiClientAndroid = "1.22.0"
+        }
+
+        const val playServicesAuth =
+            "com.google.android.gms:play-services-auth:${Versions.playServicesAuth}"
+        const val apiClient = "com.google.api-client:google-api-client:${Versions.apiClient}"
+        const val apiClientAndroid =
+            "com.google.api-client:google-api-client-android:${Versions.apiClientAndroid}"
+
+        override val components = listOf(playServicesAuth, apiClient, apiClientAndroid)
+    }
+
     object Desugar : Libraries {
         object Version {
             const val desugar = "1.0.9"
@@ -40,9 +56,17 @@ object Dependencies {
     object Kotlin {
         object Versions {
             const val kotlin = "1.3.72"
+            const val coroutines = "1.3.8"
         }
 
         const val stdlib: String = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+        const val coroutineCore =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+        const val coroutineAndroid =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+        const val coroutineTest =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+
     }
 
     object AndroidX : Libraries {
@@ -64,7 +88,7 @@ object Dependencies {
         const val roomCompiler = "androidx.room:room-compiler:${Dependencies.Versions.room}"
         const val roomKtx = "androidx.room:room-ktx:${Dependencies.Versions.room}"
 
-        override val components = listOf(coreKtx, lifeCycleCommon, viewModel,appComppat)
+        override val components = listOf(coreKtx, lifeCycleCommon, viewModel, appComppat)
     }
 
     object Hilt : Libraries {
@@ -158,7 +182,7 @@ object Dependencies {
         }
 
         const val junit = "junit:junit:${Versions.junit}"
-        const val rootTesting = "androidx.room:room-testing:${Dependencies.Versions.room}"
+        const val roomTesting = "androidx.room:room-testing:${Dependencies.Versions.room}"
 
         override val components = listOf(junit)
     }

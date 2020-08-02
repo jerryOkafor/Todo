@@ -5,6 +5,7 @@ import Dependencies.Hilt
 import Dependencies.Kotlin
 import Dependencies.Navigation
 import Dependencies.Network
+import Dependencies.PlayServices
 import Dependencies.ProjectModule.core
 import Dependencies.ProjectModule.timeline
 import Dependencies.Test
@@ -27,6 +28,7 @@ plugins {
     applyKotlinKapt
     applyDaggerHilt
     plugins.`jacoco-report`
+    id("com.google.gms.google-services")
 }
 
 
@@ -42,11 +44,12 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     coreLibraryDesugaring(Desugar.desugaring)
     implementation(Kotlin.stdlib)
+    implementation(Kotlin.coroutineCore)
+    implementation(Kotlin.coroutineAndroid)
 
     /**Modules*/
     implementation(project(core))
     implementation(project(timeline))
-
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.lifeCycleCommon)
@@ -56,6 +59,11 @@ dependencies {
     implementation(View.material)
     implementation(View.constraintLayout)
     implementation(View.calenderView)
+
+    /**Play Services*/
+    implementation(PlayServices.playServicesAuth)
+    implementation(PlayServices.apiClient)
+    implementation(PlayServices.apiClientAndroid)
 
     /**Utils*/
     api(Utils.timber)
@@ -77,7 +85,8 @@ dependencies {
     Network.components.forEach { implementation(it) }
 
     /**Test*/
-    Test.components.forEach { testImplementation(it) }
+    testImplementation(Test.junit)
+    testImplementation(Kotlin.coroutineTest)
 
     /**Android Test*/
     AndroidTest.components.forEach { androidTestImplementation(it) }

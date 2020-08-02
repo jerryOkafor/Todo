@@ -13,6 +13,7 @@ repositories {
 
 object Plugins {
     object Version {
+        const val googleServices = "4.3.3"
         const val kotlin = "1.3.72"
         const val androidGradle: String = "4.0.1"
         const val navigation: String = "2.3.0"
@@ -31,10 +32,12 @@ object Plugins {
     const val ktLint = "org.jlleitschuh.gradle:ktlint-gradle:${Version.ktLint}"
     const val detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${Version.detekt}"
     const val jacoco = "org.jacoco:org.jacoco.core:${Version.jacoco}"
+    const val googleServices = "com.google.gms:google-services:${Version.googleServices}"
 }
 
 dependencies {
     implementation(Plugins.kotlin)
+    implementation(Plugins.googleServices)
     implementation(Plugins.androidGradle)
     implementation(Plugins.navigationSafeArgs)
     implementation(Plugins.daggerHilt)
