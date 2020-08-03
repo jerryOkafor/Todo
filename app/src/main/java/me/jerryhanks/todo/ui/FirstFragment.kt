@@ -22,7 +22,7 @@ import com.kizitonwose.calendarview.ui.ViewContainer
 import kotlinx.android.synthetic.main.fragment_first.*
 import me.jerryhanks.todo.R
 import me.jerryhanks.todo.nav.Navigable
-import me.todo.core.data.db.Todo
+import me.jerryhanks.todo.core.data.db.Todo
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.YearMonth

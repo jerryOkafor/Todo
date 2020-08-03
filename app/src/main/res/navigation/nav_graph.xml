@@ -22,7 +22,7 @@
         tools:layout="@layout/timeline_fragment" />
     <activity
         android:id="@+id/newTaskActivity"
-        android:name="me.todo.createtaskfeature.ui.NewTaskActivity"
+        android:name="me.jerryhanks.todo.createtaskfeature.ui.NewTaskActivity"
         android:label="activity_new_task"
         app:moduleName="createTaskFeature"
         tools:layout="@layout/activity_new_task" />

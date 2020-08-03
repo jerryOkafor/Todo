@@ -31,6 +31,7 @@ object Dependencies {
             const val playServicesAuth = "18.1.0"
             const val apiClient = "1.22.0"
             const val apiClientAndroid = "1.22.0"
+            const val tasks = "v1-rev71-1.25.0"
         }
 
         const val playServicesAuth =
@@ -38,8 +39,9 @@ object Dependencies {
         const val apiClient = "com.google.api-client:google-api-client:${Versions.apiClient}"
         const val apiClientAndroid =
             "com.google.api-client:google-api-client-android:${Versions.apiClientAndroid}"
+        const val tasks = "com.google.apis:google-api-services-tasks:${Versions.tasks}"
 
-        override val components = listOf(playServicesAuth, apiClient, apiClientAndroid)
+        override val components = listOf(playServicesAuth, apiClient, apiClientAndroid, tasks)
     }
 
     object Desugar : Libraries {

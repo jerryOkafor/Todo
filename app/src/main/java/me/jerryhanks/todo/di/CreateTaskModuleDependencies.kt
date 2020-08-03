@@ -3,7 +3,7 @@ package me.jerryhanks.todo.di
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import me.todo.core.di.TodoService
+import me.jerryhanks.todo.core.di.TodoService
 
 /**
  * @author jerry on 19/07/2020
