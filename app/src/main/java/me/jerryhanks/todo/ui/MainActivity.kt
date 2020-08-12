@@ -1,5 +1,6 @@
 package me.jerryhanks.todo.ui
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,13 +9,23 @@ import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import me.jerryhanks.todo.R
+import me.jerryhanks.todo.core.ui.BaseActivity
 import me.jerryhanks.todo.nav.Navigable
 import me.jerryhanks.todo.nav.Navigator
-import me.jerryhanks.todo.core.di.Analytics
-import me.jerryhanks.todo.core.ui.BaseActivity
 import net.openid.appauth.*
 import timber.log.Timber
 import javax.inject.Inject
+
+interface Analytics {
+    fun analyse(from: String, context: Context): String
+}
+
+class AnalyticsAdapter @Inject constructor() :
+    Analytics {
+    override fun analyse(from: String, context: Context): String {
+        return "Hi there, I am analysing $from as you can see I am here : ${context.applicationContext.packageName}"
+    }
+}
 
 
 @AndroidEntryPoint

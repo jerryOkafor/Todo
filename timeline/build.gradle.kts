@@ -1,5 +1,6 @@
 import Dependencies.AndroidTest
 import Dependencies.AndroidX
+import Dependencies.Desugar
 import Dependencies.Kotlin
 import Dependencies.ProjectModule.core
 import Dependencies.Test
@@ -15,8 +16,8 @@ plugins {
 
 
 dependencies {
-
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    coreLibraryDesugaring(Desugar.desugaring)
     implementation(Kotlin.stdlib)
 
     /**Modules*/

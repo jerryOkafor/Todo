@@ -22,6 +22,8 @@ import Dependencies.View
 //https://medium.com/@ranjeetsinha/jacoco-with-kotlin-dsl-f1f067e42cd0
 //https://developer.android.com/studio/test/command-line
 //https://github.com/dalvin/AndroidTestsWithDagger2
+//https://www.danstone.uk/2020/06/dependency-injection-hilt-room-database.html
+//https://medium.com/better-programming/hilt-a-new-dependency-injection-library-for-android-e6e00e719aeb
 
 plugins {
     plugins.`common-android`
@@ -73,7 +75,7 @@ dependencies {
     implementation(View.calenderView)
 
     /**Play Services*/
-//    implementation(PlayServices.playServicesAuth)
+    implementation(PlayServices.playServicesAuth)
 //    implementation(PlayServices.apiClient)
 //    implementation(PlayServices.apiClientAndroid)
 //    implementation(PlayServices.tasks)

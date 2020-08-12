@@ -1,5 +1,6 @@
 import Dependencies.AndroidTest
 import Dependencies.AndroidX
+import Dependencies.Desugar
 import Dependencies.Hilt
 import Dependencies.Kotlin
 import Dependencies.Network
@@ -9,13 +10,45 @@ import Dependencies.View
 plugins {
     plugins.`common-library`
     applyKotlinKapt
-//    applyDaggerHilt
+    applyDaggerHilt
     plugins.`jacoco-report`
 }
 
+android {
+    defaultConfig {
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
+    }
+
+    sourceSets {
+        val androidTest by named("androidTest")
+        val test by named("test")
+
+        androidTest.apply {
+            java.srcDirs("$projectDir/schemas", "src/sharedTest/java")
+        }
+
+        androidTest.apply {
+            java.srcDirs("src/sharedTest/java")
+        }
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+hilt {
+    enableTransformForLocalTests = true
+}
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    coreLibraryDesugaring(Desugar.desugaring)
     implementation(Kotlin.stdlib)
     implementation(Kotlin.coroutineCore)
     implementation(Kotlin.coroutineAndroid)
@@ -47,9 +80,17 @@ dependencies {
     testImplementation(Test.junit)
     testImplementation(Test.roomTesting)
     testImplementation(Kotlin.coroutineTest)
+    testImplementation(AndroidX.coreTesting)
+
+    testImplementation(Hilt.hiltAndroidTest)
+    kaptTest(Hilt.hiltAndroidCompiler)
 
     /**Android Test*/
     androidTestImplementation(AndroidTest.testExtension)
     androidTestImplementation(AndroidTest.espresso)
+    androidTestImplementation(AndroidX.coreTesting)
+
+    androidTestImplementation(Hilt.hiltAndroidTest)
+    kaptAndroidTest(Hilt.hiltAndroidCompiler)
 
 }

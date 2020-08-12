@@ -21,10 +21,11 @@ import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
 import kotlinx.android.synthetic.main.fragment_first.*
 import me.jerryhanks.todo.R
+import me.jerryhanks.todo.core.data.db.entities.Task
 import me.jerryhanks.todo.nav.Navigable
-import me.jerryhanks.todo.core.data.db.Todo
 import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
@@ -222,7 +223,24 @@ class FirstFragment : Fragment(), Navigable {
         todoRecycler.layoutManager = layoutManager
         todoRecycler.adapter = todoAdapter
 
-        todoAdapter.submitList((0..30).map { Todo(id = it.toLong()) })
+        todoAdapter.submitList((0..30).map {
+            Task(
+                id = it.toLong(),
+                gId = "gid",
+                eTag = "",
+                title = "Title",
+                updatedAt = LocalDateTime.now(),
+                selfLink = "Link",
+                parent = "Parent",
+                position = "000222",
+                notes = "Note",
+                status = "Status",
+                due = LocalDateTime.parse("2020-08-09T06:30:00"),
+                completed = LocalDateTime.parse("2020-08-30T06:30:00"),
+                deleted = false,
+                hidden = false
+            )
+        })
     }
 }
 

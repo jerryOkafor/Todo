@@ -76,6 +76,7 @@ object Dependencies {
             const val coreKtx = "1.3.0"
             const val lifeCycle = "2.3.0-alpha03"
             const val appCompat = "1.1.0"
+            const val coreTesting = "2.1.0"
         }
 
         const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
@@ -90,6 +91,8 @@ object Dependencies {
         const val roomCompiler = "androidx.room:room-compiler:${Dependencies.Versions.room}"
         const val roomKtx = "androidx.room:room-ktx:${Dependencies.Versions.room}"
 
+        const val coreTesting = "androidx.arch.core:core-testing:${Versions.coreTesting}"
+
         override val components = listOf(coreKtx, lifeCycleCommon, viewModel, appComppat)
     }
 
@@ -100,6 +103,7 @@ object Dependencies {
         }
 
         const val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hilt}"
+        const val hiltAndroidTest = "com.google.dagger:hilt-android-testing:${Versions.hilt}"
         const val hiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltVM}"
         const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
         const val hiltCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltVM}"

@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import me.jerryhanks.todo.R
-import me.jerryhanks.todo.core.data.db.Todo
+import me.jerryhanks.todo.core.data.db.entities.Task
 
 /**
  * @author jerry on 25/07/2020
  * for Todo
  **/
 
-class TodoAdapter : ListAdapter<Todo, TodoAdapter.TodoViewHolder>(DIFF_CALLBACK) {
+class TodoAdapter : ListAdapter<Task, TodoAdapter.TodoViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         val rootView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_todo, parent, false)
@@ -27,12 +27,12 @@ class TodoAdapter : ListAdapter<Todo, TodoAdapter.TodoViewHolder>(DIFF_CALLBACK)
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Todo>() {
-            override fun areItemsTheSame(oldItem: Todo, newItem: Todo): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Task>() {
+            override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: Todo, newItem: Todo): Boolean {
+            override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
                 return oldItem == newItem
             }
         }
