@@ -1,5 +1,7 @@
 package me.jerryhanks.todo.core.di
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -7,9 +9,11 @@ import dagger.hilt.android.components.ApplicationComponent
 import me.jerryhanks.todo.core.data.api.TaskListService
 import me.jerryhanks.todo.core.data.api.TaskService
 import me.jerryhanks.todo.core.utils.Constants
+import me.jerryhanks.todo.core.utils.LocalDateTimeConverter
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.LocalDateTime
 
 
 /**
@@ -34,10 +38,10 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
             .build()
     }
@@ -63,4 +67,10 @@ object NetworkModule {
 
         return client.build()
     }
+
+    @Provides
+    fun provideGson() = GsonBuilder()
+        .registerTypeAdapter(LocalDateTime::class.java, LocalDateTimeConverter())
+        .create()
+
 }
