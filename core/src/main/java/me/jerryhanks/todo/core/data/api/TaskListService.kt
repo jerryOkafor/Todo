@@ -16,7 +16,7 @@ interface TaskListService {
      * Returns all authenticated user's task list.
      * */
     @GET("users/@me/lists")
-    suspend fun lists(): List<Resources<GTaskList>>
+    suspend fun lists(): Resources<GTaskList>
 
     /**
      * Returns the authenticated user's specified task list.

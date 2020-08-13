@@ -24,6 +24,7 @@ interface Libraries {
 object Dependencies {
     object Versions {
         const val room = "2.2.5"
+        const val okHttp = "4.8.1"
     }
 
     object PlayServices : Libraries {
@@ -189,6 +190,8 @@ object Dependencies {
 
         const val junit = "junit:junit:${Versions.junit}"
         const val roomTesting = "androidx.room:room-testing:${Dependencies.Versions.room}"
+        const val mockWebServer =
+            "com.squareup.okhttp3:mockwebserver:${Dependencies.Versions.okHttp}"
 
         override val components = listOf(junit)
     }

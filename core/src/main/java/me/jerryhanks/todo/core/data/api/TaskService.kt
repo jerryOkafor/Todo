@@ -15,7 +15,7 @@ interface TaskService {
      * Returns all tasks in the specified task list.
      * */
     @GET("/lists/{taskList}/tasks")
-    suspend fun lists(@Path("taskList") tasksList: String): List<Resources<GTask>>
+    suspend fun lists(@Path("taskList") tasksList: String): Resources<GTask>
 
     /**
      * Returns the specified task

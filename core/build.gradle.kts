@@ -35,6 +35,9 @@ android {
         androidTest.apply {
             java.srcDirs("src/sharedTest/java")
         }
+        test.apply {
+            java.srcDirs("src/sharedTest/java")
+        }
     }
 }
 
@@ -79,6 +82,7 @@ dependencies {
     /**Tests*/
     testImplementation(Test.junit)
     testImplementation(Test.roomTesting)
+    testImplementation(Test.mockWebServer)
     testImplementation(Kotlin.coroutineTest)
     testImplementation(AndroidX.coreTesting)
 
