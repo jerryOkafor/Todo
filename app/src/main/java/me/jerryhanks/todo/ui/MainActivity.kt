@@ -1,11 +1,15 @@
 package me.jerryhanks.todo.ui
 
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.common.Scopes
+import com.google.android.gms.common.api.Scope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import me.jerryhanks.todo.R
@@ -57,40 +61,40 @@ class MainActivity : BaseActivity(), Navigable {
         bottomNavigationView.setupWithNavController(navController)
 
 
-//        val tasksScope = Scope("https://www.googleapis.com/auth/tasks")
-//        val emailScope = Scope(Scopes.EMAIL)
-//
-//        val serviceConfiguration =
-//            AuthorizationServiceConfiguration(
-//                Uri.parse("https://accounts.google.com/o/oauth2/v2/auth") /* auth endpoint */,
-//                Uri.parse("https://www.googleapis.com/oauth2/v4/token") /* token endpoint */
-//            )
-//
-//
-//        val clientId = "157892065474-koqe2hjg6q0usj9ljeeq1kv7nk29o0iv.apps.googleusercontent.com"
-//        val redirectUri =
-//            Uri.parse("me.jerryhanks.todo:/oauth2callback")
-//
-//        val builder = AuthorizationRequest.Builder(
-//            serviceConfiguration,
-//            clientId,
-//            AuthorizationRequest.RESPONSE_TYPE_CODE,
-//            redirectUri
-//        )
-//        builder.setScopes("profile", tasksScope.scopeUri, emailScope.scopeUri)
-//
-//        val request = builder.build()
-//        val authorizationService = AuthorizationService(this)
-//
-//        val action = "me.jerryhanks.todo.HANDLE_AUTHORIZATION_RESPONSE"
-//        val postAuthorizationIntent = Intent(action)
-//        val pendingIntent = PendingIntent.getActivity(
-//            this,
-//            request.hashCode(),
-//            postAuthorizationIntent,
-//            0
-//        )
-//        authorizationService.performAuthorizationRequest(request, pendingIntent)
+        val tasksScope = Scope("https://www.googleapis.com/auth/tasks")
+        val emailScope = Scope(Scopes.EMAIL)
+
+        val serviceConfiguration =
+            AuthorizationServiceConfiguration(
+                Uri.parse("https://accounts.google.com/o/oauth2/v2/auth") /* auth endpoint */,
+                Uri.parse("https://www.googleapis.com/oauth2/v4/token") /* token endpoint */
+            )
+
+
+        val clientId = "157892065474-koqe2hjg6q0usj9ljeeq1kv7nk29o0iv.apps.googleusercontent.com"
+        val redirectUri =
+            Uri.parse("me.jerryhanks.todo:/oauth2callback")
+
+        val builder = AuthorizationRequest.Builder(
+            serviceConfiguration,
+            clientId,
+            AuthorizationRequest.RESPONSE_TYPE_CODE,
+            redirectUri
+        )
+        builder.setScopes("profile", tasksScope.scopeUri, emailScope.scopeUri)
+
+        val request = builder.build()
+        val authorizationService = AuthorizationService(this)
+
+        val action = "me.jerryhanks.todo.HANDLE_AUTHORIZATION_RESPONSE"
+        val postAuthorizationIntent = Intent(action)
+        val pendingIntent = PendingIntent.getActivity(
+            this,
+            request.hashCode(),
+            postAuthorizationIntent,
+            0
+        )
+        authorizationService.performAuthorizationRequest(request, pendingIntent)
 
     }
 

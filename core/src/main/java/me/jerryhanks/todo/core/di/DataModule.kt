@@ -1,6 +1,5 @@
 package me.jerryhanks.todo.core.di
 
-import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
@@ -12,8 +11,6 @@ import dagger.hilt.android.components.ActivityComponent
  **/
 @Module
 @InstallIn(ActivityComponent::class)
-abstract class AnalyticsModule {
+abstract class DataModule {
 
-    @Binds
-    abstract fun bindAnalyticsService(adapter: AnalyticsAdapter): Analytics
 }

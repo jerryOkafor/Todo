@@ -3,8 +3,7 @@ package me.jerryhanks.todo.createtaskfeature.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import me.jerryhanks.todo.core.di.TodoService
-import timber.log.Timber
+import me.jerryhanks.todo.core.data.api.TaskService
 import javax.inject.Inject
 
 /**
@@ -12,13 +11,13 @@ import javax.inject.Inject
  * for Todo
  **/
 
-class NewTaskViewModel @Inject constructor(private val todoService: TodoService) : ViewModel() {
+class NewTaskViewModel @Inject constructor(private val todoService: TaskService) : ViewModel() {
 
     fun getTodos() {
         viewModelScope.launch {
-            val todos = todoService.todos()
-
-            Timber.d("$todos")
+//            val todos = todoService.todos()
+//
+//            Timber.d("$todos")
         }
     }
 }

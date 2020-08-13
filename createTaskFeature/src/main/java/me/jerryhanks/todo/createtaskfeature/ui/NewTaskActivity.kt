@@ -7,19 +7,15 @@ import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.EntryPointAccessors
 import me.jerryhanks.createtaskfeature.R
-import me.jerryhanks.todo.di.CreateTaskModuleDependencies
-import me.jerryhanks.todo.core.di.TodoService
 import me.jerryhanks.todo.core.ui.BaseActivity
 import me.jerryhanks.todo.createtaskfeature.di.DaggerCreateTaskComponent
+import me.jerryhanks.todo.di.CreateTaskModuleDependencies
 import javax.inject.Inject
 
 class NewTaskActivity : BaseActivity() {
 
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProvider.Factory
-
-    @Inject
-    lateinit var todoService: TodoService
 
     private val newTaskViewModel by viewModels<NewTaskViewModel> { viewModelProviderFactory }
 
