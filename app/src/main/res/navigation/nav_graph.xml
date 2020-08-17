@@ -15,11 +15,11 @@
         android:name="me.jerryhanks.todo.ui.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second"/>
-    <fragment
-        android:id="@+id/timelineFragment"
-        android:name="me.todo.todo.timeline.TimelineFragment"
-        android:label="TimelineFragment"
-        tools:layout="@layout/timeline_fragment" />
+<!--    <fragment-->
+<!--        android:id="@+id/timelineFragment"-->
+<!--        android:name="me.jerryhanks.todo.TimelineFragment"-->
+<!--        android:label="TimelineFragment"-->
+<!--        tools:layout="@layout/timeline_fragment" />-->
     <activity
         android:id="@+id/newTaskActivity"
         android:name="me.jerryhanks.todo.createtaskfeature.ui.NewTaskActivity"

@@ -7,11 +7,11 @@
         android:icon="@drawable/ic_action_calendar_month"
         android:title="" />
 
-<!--    <item-->
-<!--        android:id="@+id/timelineFragment2"-->
-<!--        android:enabled="true"-->
-<!--        android:icon="@drawable/ic_action_calendar_month"-->
-<!--        android:title="" />-->
+    <!--    <item-->
+    <!--        android:id="@+id/timelineFragment2"-->
+    <!--        android:enabled="true"-->
+    <!--        android:icon="@drawable/ic_action_calendar_month"-->
+    <!--        android:title="" />-->
 
     <item
         android:id="@+id/newTaskActivity"
@@ -19,16 +19,16 @@
         android:icon="@drawable/ic_add_circle"
         android:title="" />
 
-<!--    <item-->
-<!--        android:id="@+id/timelineFragment4"-->
-<!--        android:enabled="true"-->
-<!--        android:icon="@drawable/ic_action_calendar_month"-->
-<!--        android:title="" />-->
+    <!--    <item-->
+    <!--        android:id="@+id/timelineFragment4"-->
+    <!--        android:enabled="true"-->
+    <!--        android:icon="@drawable/ic_action_calendar_month"-->
+    <!--        android:title="" />-->
 
     <item
         android:id="@+id/accountFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_action_calendar_month"
+        android:icon="@drawable/ic_account_circle"
         android:title="" />
 
 </menu>

@@ -11,6 +11,7 @@ import okhttp3.mockwebserver.RecordedRequest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.time.LocalDateTime
@@ -28,7 +29,7 @@ class TaskListServiceTest {
             return when (request.path) {
                 "/users/@me/lists" -> {
                     MockResponse()
-                        .setBody(RestServiceTestHelper.getStringFromFile("mock/tasklist.json"))
+                        .setBody(RestServiceTestHelper.getStringFromFile("mock/tasklists.json"))
                         .setResponseCode(200)
                 }
                 else -> MockResponse().setResponseCode(404)
@@ -61,9 +62,19 @@ class TaskListServiceTest {
     }
 
     @Test
-    fun listTaskLists() = runBlocking {
+    fun `TaskList response from server`() = runBlocking {
         val taskList = taskListService.lists()
         assert(taskList.items.isNotEmpty())
+        assert(taskList.items.size == 3)
+    }
+
+    @Test
+    fun `Resource not found`() = runBlocking {
+        try {
+            val taskList = taskListService.taskList("")
+        } catch (e: HttpException) {
+            assert(e is HttpException)
+        }
     }
 
 }

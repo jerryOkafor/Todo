@@ -1,5 +1,4 @@
 @file:Suppress("IllegalIdentifier")
-
 package me.jerryhanks.todo.core.data
 
 import android.content.Context
@@ -18,7 +17,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
-
 
 /**
  * @author jerry on 04/08/2020
@@ -55,8 +53,8 @@ class TaskDaoTest {
     @Test
     fun insertAndGetTask() = runBlocking {
         val task = TestUtils.createTask()
-
         taskDao.insertTask(task)
+
         val byId = taskDao.getTask(TestUtils.TEST_TASK_ID).getOrAwaitValue()
         assert(byId.id == task.id)
     }

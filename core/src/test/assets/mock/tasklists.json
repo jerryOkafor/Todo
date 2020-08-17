@@ -1,0 +1,30 @@
+{
+  "kind": "tasks#taskLists",
+  "etag": "\"LTQ4ODg5ODI1Ng\"",
+  "items": [
+    {
+      "kind": "tasks#taskList",
+      "id": "MDk5MDkyODY2NzIxMTI0NjE2NTE6MDow",
+      "etag": "\"LTEzMjI0NTA4MTg\"",
+      "title": "My Tasks",
+      "updated": "2020-08-02T21:56:23.468Z",
+      "selfLink": "https://www.googleapis.com/tasks/v1/users/@me/lists/MDk5MDkyODY2NzIxMTI0NjE2NTE6MDow"
+    },
+    {
+      "kind": "tasks#taskList",
+      "id": "MDk5MDkyODY2NzIxMTI0NjE2NTE6MDYyMTY4OTEwOTkxNjc3MTow",
+      "etag": "\"LTEzMjI0NTA4MTg\"",
+      "title": "Jerry hanks's list",
+      "updated": "2020-08-02T21:56:23.468Z",
+      "selfLink": "https://www.googleapis.com/tasks/v1/users/@me/lists/MDk5MDkyODY2NzIxMTI0NjE2NTE6MDYyMTY4OTEwOTkxNjc3MTow"
+    },
+    {
+      "kind": "tasks#taskList",
+      "id": "THIybEotTG5aS0pLdlBiZA",
+      "etag": "\"LTEyOTMxMzA5OTc\"",
+      "title": "",
+      "updated": "2020-08-03T06:05:03.263Z",
+      "selfLink": "https://www.googleapis.com/tasks/v1/users/@me/lists/THIybEotTG5aS0pLdlBiZA"
+    }
+  ]
+}

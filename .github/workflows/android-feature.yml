@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: brew install ktlint
       - name: Run ktlint
-        run: ./gradlew detektAll
+        run: ./gradlew ktlintDebugCheck
 
   detekt:
     needs: [setup,ktlint]
@@ -43,7 +43,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: brew install ktlint
       - name: Run ktlint
-        run: ./gradlew ktlintDebugCheck
+        run: ./gradlew detektAll
 
   test:
     needs: [setup,ktlint,detekt]
