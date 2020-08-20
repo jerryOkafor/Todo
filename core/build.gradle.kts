@@ -6,6 +6,12 @@ import Dependencies.Kotlin
 import Dependencies.Network
 import Dependencies.Test
 import Dependencies.View
+import java.io.FileInputStream
+import java.util.*
+
+val propertyFileStream = FileInputStream("${rootDir}/app.properties")
+val property = Properties().also { it.load(propertyFileStream) }
+val googleTaskApiKey = property.getProperty("GOOGL_TASK_API_KEY")
 
 plugins {
     plugins.`common-library`
@@ -23,7 +29,9 @@ android {
             }
         }
     }
-
+    buildTypes.all {
+        buildConfigField("String", "GOOGLE_TASK_API_KEY", "\"${googleTaskApiKey}\"")
+    }
     sourceSets {
         val androidTest by named("androidTest")
         val test by named("test")

@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import me.jerryhanks.todo.core.BuildConfig
 import me.jerryhanks.todo.core.data.api.TaskListService
 import me.jerryhanks.todo.core.data.api.TaskService
 import me.jerryhanks.todo.core.utils.Constants
@@ -55,7 +56,7 @@ object NetworkModule {
             val originalUrl = originalRequest.url()
 
             val newUrl = originalUrl.newBuilder()
-                .addQueryParameter("key", Constants.API_KEY)
+                .addQueryParameter("key", BuildConfig.GOOGLE_TASK_API_KEY)
                 .build()
             val newRequestBuilder = originalRequest.newBuilder()
                 .header("Authorization", "Bearer TOKEN")

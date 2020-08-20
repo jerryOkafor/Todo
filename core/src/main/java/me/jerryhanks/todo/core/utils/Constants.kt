@@ -7,5 +7,4 @@ package me.jerryhanks.todo.core.utils
  **/
 object Constants {
     const val BASE_URL = "https://www.googleapis.com/tasks/v1/"
-    const val API_KEY = "AIzaSyAIrRRLL1npbIkEQa3SpEOUcpL5dWh72DE"
 }
