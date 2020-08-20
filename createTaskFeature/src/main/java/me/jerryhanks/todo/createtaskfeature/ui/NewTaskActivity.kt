@@ -29,17 +29,6 @@ class NewTaskActivity : BaseActivity() {
         }
 
         setContentView(R.layout.activity_new_task)
-        setSupportActionBar(findViewById(R.id.toolbar))
-
-        supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
-//            setHomeAsUpIndicator(
-//                ContextCompat.getDrawable(
-//                    this@NewTaskActivity,
-//                    R.drawable.ic_close
-//                )
-//            )
-        }
 
         DaggerCreateTaskComponent.builder()
             .context(this)

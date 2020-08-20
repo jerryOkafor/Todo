@@ -2,27 +2,23 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/create_tasks_feature_nav_graph">
-<!--    app:startDestination="@id/FirstFragment">-->
+    android:id="@+id/create_tasks_feature_nav_graph"
+    app:startDestination="@id/createTaskFragment">
 
-<!--    <fragment-->
-<!--        android:id="@+id/FirstFragment"-->
-<!--        android:name="me.jerryhanks.createtaskfeature.ui.FirstFragment"-->
-<!--        android:label="@string/first_fragment_label"-->
-<!--        tools:layout="@layout/ct_feat_fragment_first">-->
+    <fragment
+        android:id="@+id/createTaskFragment"
+        android:name="me.jerryhanks.todo.createtaskfeature.ui.NewTaskFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/ct_feat_fragment_first">
 
-<!--        <action-->
-<!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
-<!--            app:destination="@id/SecondFragment" />-->
-<!--    </fragment>-->
-<!--    <fragment-->
-<!--        android:id="@+id/SecondFragment"-->
-<!--        android:name="me.jerryhanks.createtaskfeature.ui.SecondFragment"-->
-<!--        android:label="@string/second_fragment_label"-->
-<!--        tools:layout="@layout/ct_feat_fragment_second">-->
+        <action
+            android:id="@+id/action_newTaskFragment_to_addTagFragment"
+            app:destination="@id/addTagFragment" />
+    </fragment>
 
-<!--        <action-->
-<!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
-<!--            app:destination="@id/FirstFragment" />-->
-<!--    </fragment>-->
+    <dialog
+        android:id="@+id/addTagFragment"
+        android:name="me.jerryhanks.todo.createtaskfeature.ui.AddTagFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/ct_feat_add_tag_fragment" />
 </navigation>

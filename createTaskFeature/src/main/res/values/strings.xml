@@ -8,4 +8,12 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="add_tag">Add Tag</string>
+    <string name="create_task">Create Task</string>
+    <string name="title">Title</string>
+    <string name="e_tag">E-Tag</string>
+    <string name="name">Name</string>
+    <string name="date">Date</string>
+    <string name="starting_time">Starting Time</string>
+    <string name="description">Description</string>
 </resources>
