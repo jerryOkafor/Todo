@@ -1,3 +1,6 @@
+/**
+ * A simple [Fragment] subclass as the default destination in the navigation.
+ */
 package me.jerryhanks.todo.createtaskfeature.ui.newTask
 
 import android.os.Bundle
@@ -6,14 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.ct_feat_fragment_first.*
 import me.jerryhanks.createtaskfeature.R
+import javax.inject.Inject
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class NewTaskFragment : Fragment() {
+    @Inject
+    lateinit var viewModeProviderFactory: ViewModelProvider.Factory
+
+    private val viewModel = viewModels<NewTaskViewModel> { viewModeProviderFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,6 +29,12 @@ class NewTaskFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.ct_feat_fragment_first, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

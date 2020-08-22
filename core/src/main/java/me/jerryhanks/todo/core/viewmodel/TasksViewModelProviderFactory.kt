@@ -11,7 +11,7 @@ import javax.inject.Singleton
  * for Todo
  **/
 @Singleton
-class TodoViewModelFactory @Inject
+class TasksViewModelProviderFactory @Inject
 @Suppress
 constructor(private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>) :
     ViewModelProvider.Factory {

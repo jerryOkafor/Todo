@@ -17,4 +17,5 @@ interface CreateTaskModuleDependencies {
     fun todoService(): TaskService
     fun tasksListDataSource(): TasksListDataSource
     fun tasksListDao(): TasksListDao
+//    fun tasksViewModelProviderFactory(): ViewModelProvider.Factory
 }

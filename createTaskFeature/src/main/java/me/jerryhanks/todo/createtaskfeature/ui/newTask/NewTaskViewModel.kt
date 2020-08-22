@@ -4,10 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import de.halfbit.knot3.CompositeKnot
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import me.jerryhanks.todo.core.data.db.daos.TasksListDao
 import me.jerryhanks.todo.core.data.db.entities.TasksList
 import me.jerryhanks.todo.core.data.repository.TasksListRepository
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -67,9 +69,9 @@ class NewTaskViewModel @Inject constructor(
 
     fun getTodos() {
         viewModelScope.launch {
-//            val todos = todoService.todos()
-//
-//            Timber.d("$todos")
+            val taskLists = tasksListRepository.tasksList().collect {
+                it.forEach { Timber.d("TaskList: $it") }
+            }
         }
     }
 }
