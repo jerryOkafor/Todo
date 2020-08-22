@@ -1,3 +1,8 @@
+/**
+ * @author jerry on 19/07/2020
+ * for Todo
+ **/
+
 package me.jerryhanks.todo.nav
 
 import androidx.appcompat.app.AppCompatActivity
@@ -11,11 +16,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import me.jerryhanks.todo.R
 import timber.log.Timber
-
-/**
- * @author jerry on 19/07/2020
- * for Todo
- **/
 
 interface Navigable
 

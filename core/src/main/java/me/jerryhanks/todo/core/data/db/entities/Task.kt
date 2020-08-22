@@ -1,6 +1,10 @@
 package me.jerryhanks.todo.core.data.db.entities
 
-import androidx.room.*
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
+import androidx.room.Relation
 import java.time.LocalDateTime
 
 /**

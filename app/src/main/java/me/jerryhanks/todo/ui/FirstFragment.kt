@@ -1,3 +1,7 @@
+/**
+ * @author jerry on 26/07/2020
+ * for Todo
+ **/
 package me.jerryhanks.todo.ui
 
 import android.os.Bundle
@@ -74,8 +78,8 @@ class FirstFragment : Fragment(), Navigable {
         AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             appBarOffset = verticalOffset
             val totalScrollRange = appBarLayout.totalScrollRange
-            val progress =
-                (-verticalOffset).toFloat() / totalScrollRange.toFloat()
+//            val progress =
+//                (-verticalOffset).toFloat() / totalScrollRange.toFloat()
 
             //mArrowImageView.setRotation(-progress * 180)
 

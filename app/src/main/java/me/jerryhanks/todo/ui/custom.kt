@@ -1,3 +1,7 @@
+/**
+ * @author jerry on 26/07/2020
+ * for Todo
+ **/
 package me.jerryhanks.todo.ui
 
 import android.content.Context
@@ -10,11 +14,6 @@ import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
-
-/**
- * @author jerry on 26/07/2020
- * for Todo
- **/
 
 class TodoAppBarBehavior(context: Context, attrs: AttributeSet) :
     AppBarLayout.Behavior(context, attrs) {
@@ -64,7 +63,8 @@ class TodoRecyclerView @JvmOverloads constructor(
 ) : RecyclerView(context, attrs, defStyle) {
     private var appBarTracking: AppBarTracking? = null
     private var view: View? = null
-//    private var current: Int = 0
+
+    //    private var current: Int = 0
     private var layoutManager: LinearLayoutManager? = null
 
     interface AppBarTracking {

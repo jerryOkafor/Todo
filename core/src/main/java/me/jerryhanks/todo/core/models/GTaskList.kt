@@ -16,6 +16,7 @@ data class GTaskList(
     val updated: LocalDateTime,
     val selfLink: String
 ) {
+    @Suppress("UnusedPrivateMember")
     private fun toTaskList(): TasksList {
         return TasksList(
             -1L,

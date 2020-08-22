@@ -1,3 +1,7 @@
+/**
+ * @author jerry on 22/08/2020
+ * for Todo
+ **/
 package me.jerryhanks.todo.core.data
 
 import android.content.Context
@@ -7,11 +11,7 @@ import org.junit.After
 import org.junit.Before
 import java.io.IOException
 
-
-/**
- * @author jerry on 22/08/2020
- * for Todo
- **/
+@Suppress("UnnecessaryAbstractClass")
 abstract class BaseDaoTest {
     protected lateinit var tasksDB: TasksDB
 
@@ -21,9 +21,9 @@ abstract class BaseDaoTest {
         tasksDB = TasksDB.getInstance(context, true)
     }
 
-//    @After
-//    @Throws(IOException::class)
-//    fun closeDb() {
-//        tasksDB.close()
-//    }
+    @After
+    @Throws(IOException::class)
+    fun closeDb() {
+        tasksDB.close()
+    }
 }

@@ -1,3 +1,7 @@
+/**
+ * @author jerry on 19/07/2020
+ * for Todo
+ **/
 package me.jerryhanks.todo.createtaskfeature.ui.newTask
 
 import androidx.lifecycle.ViewModel
@@ -6,16 +10,10 @@ import de.halfbit.knot3.CompositeKnot
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import me.jerryhanks.todo.core.data.db.daos.TasksListDao
 import me.jerryhanks.todo.core.data.db.entities.TasksList
 import me.jerryhanks.todo.core.data.repository.TasksListRepository
 import timber.log.Timber
 import javax.inject.Inject
-
-/**
- * @author jerry on 19/07/2020
- * for Todo
- **/
 
 sealed class State {
     object Empty : State()
@@ -47,18 +45,20 @@ interface LoadTagsAction : KnotAction {
     }
 }
 
-class DefaultLoadTagsAction(
-    private val viewModelScope: CoroutineScope,
-    private val tasksListDao: TasksListDao
-) : LoadTagsAction {
+class DefaultLoadTagsAction
+//    (
+//    private val viewModelScope: CoroutineScope,
+//    private val tasksListDao: TasksListDao
+//)
+    : LoadTagsAction {
     override fun perform(): LoadTagsAction.Result {
         return LoadTagsAction.Result.Success(emptyList())
     }
 }
 
-class LoadTagsDelegate() : Delegate {
+class LoadTagsDelegate : Delegate {
     override fun CompositeKnot<State>.register(viewModelScope: CoroutineScope) {
-
+        Timber.d("I am here")
     }
 
 }
@@ -69,7 +69,7 @@ class NewTaskViewModel @Inject constructor(
 
     fun getTodos() {
         viewModelScope.launch {
-            val taskLists = tasksListRepository.tasksList().collect {
+            tasksListRepository.tasksList().collect {
                 it.forEach { Timber.d("TaskList: $it") }
             }
         }

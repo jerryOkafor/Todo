@@ -1,22 +1,26 @@
+/**
+ * @author jerry on 26/07/2020
+ * for Todo
+ **/
 package me.jerryhanks.todo.ui
 
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.gms.common.Scopes
-import com.google.android.gms.common.api.Scope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import me.jerryhanks.todo.R
 import me.jerryhanks.todo.core.ui.BaseActivity
 import me.jerryhanks.todo.nav.Navigable
 import me.jerryhanks.todo.nav.Navigator
-import net.openid.appauth.*
+import net.openid.appauth.AuthState
+import net.openid.appauth.AuthorizationException
+import net.openid.appauth.AuthorizationResponse
+import net.openid.appauth.AuthorizationService
+import net.openid.appauth.TokenResponse
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -73,7 +77,7 @@ class MainActivity : BaseActivity(), Navigable {
 //
 //        val clientId = "157892065474-koqe2hjg6q0usj9ljeeq1kv7nk29o0iv.apps.googleusercontent.com"
 //        val redirectUri =
-//            Uri.parse("me.jerryhanks.todo:/oauth2callback")
+//            Uri.parse("me.jerryhanks.todos:/oauth2callback")
 //
 //        val builder = AuthorizationRequest.Builder(
 //            serviceConfiguration,
@@ -182,8 +186,8 @@ class MainActivity : BaseActivity(), Navigable {
 //    }
 
     companion object {
-        var topspace = 0
-        private const val RC_TASKS = 10112
+        //        var topspace = 0
+//        private const val RC_TASKS = 10112
         private const val USED_INTENT = "USED_INTENT"
         private const val LOG_TAG = "MainActivity"
     }

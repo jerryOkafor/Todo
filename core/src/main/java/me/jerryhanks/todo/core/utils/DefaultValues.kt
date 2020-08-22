@@ -14,7 +14,8 @@ object DefaultValues {
      * Returns list of default TaskLists/Category for
      * pre-populating the Room Database at creation.
      * */
-    fun defaultTasksListValues(): List<ContentValues> {
+    @Suppress("MagicNumber", "StringLiteralDuplication", "LongMethod")
+    fun defaultTasksLists(): List<ContentValues> {
         return listOf(
             ContentValues().apply {
                 put("id", 1)

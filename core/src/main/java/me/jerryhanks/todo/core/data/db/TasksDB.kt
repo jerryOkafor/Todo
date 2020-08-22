@@ -67,7 +67,7 @@ abstract class TasksDB : RoomDatabase() {
 
         private fun populateDb(db: SupportSQLiteDatabase) {
             try {
-                DefaultValues.defaultTasksListValues().forEach {
+                DefaultValues.defaultTasksLists().forEach {
                     db.insert("taskLists", SQLiteDatabase.CONFLICT_REPLACE, it)
                 }
             } catch (e: SQLException) {

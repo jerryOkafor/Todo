@@ -1,3 +1,7 @@
+/**
+ * @author jerry on 25/07/2020
+ * for Todo
+ **/
 package me.jerryhanks.todo.ui
 
 import android.view.LayoutInflater
@@ -9,11 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import me.jerryhanks.todo.R
 import me.jerryhanks.todo.core.data.db.entities.Task
-
-/**
- * @author jerry on 25/07/2020
- * for Todo
- **/
 
 class TodoAdapter : ListAdapter<Task, TodoAdapter.TodoViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {

@@ -13,6 +13,7 @@ data class GLink(
     val description: String,
     val link: String
 ) {
+    @Suppress("UnusedPrivateMember")
     private fun toLink() = Link(
         -1L, taskId = taskId, type = type, description = description, link = link
     )

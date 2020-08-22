@@ -36,7 +36,7 @@ class TaskListDaoTest : BaseDaoTest() {
 
     @Test
     fun shouldReturnListofTasksLists_whenDbisCreated() = runBlockingTest {
-        val testValues = DefaultValues.defaultTasksListValues()
+        val testValues = DefaultValues.defaultTasksLists()
         val job = launch {
             val tasksLists = tasksLisDao.tasksLists()
             assertEquals(tasksLists.toList(), testValues)

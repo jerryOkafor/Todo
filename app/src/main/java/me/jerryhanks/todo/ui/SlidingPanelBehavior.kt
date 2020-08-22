@@ -1,15 +1,3 @@
-package me.jerryhanks.todo.ui
-
-import android.content.Context
-import android.util.AttributeSet
-import android.view.MotionEvent
-import android.view.View
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.NestedScrollingChild2
-import androidx.core.view.ViewCompat
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.AppBarLayout.ScrollingViewBehavior
-
 /**
  *
  * `SlidingPanelBehavior` provides all the functionality of
@@ -66,6 +54,18 @@ import com.google.android.material.appbar.AppBarLayout.ScrollingViewBehavior
  *
  *
  */
+package me.jerryhanks.todo.ui
+
+import android.content.Context
+import android.util.AttributeSet
+import android.view.MotionEvent
+import android.view.View
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.NestedScrollingChild2
+import androidx.core.view.ViewCompat
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.AppBarLayout.ScrollingViewBehavior
+
 class SlidingPanelBehavior(context: Context?, attrs: AttributeSet?) :
     ScrollingViewBehavior(context, attrs) {
     private var mAppBar: AppBarLayout? = null

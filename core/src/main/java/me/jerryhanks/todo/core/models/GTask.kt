@@ -1,13 +1,11 @@
-package me.jerryhanks.todo.core.models
-
-import me.jerryhanks.todo.core.data.db.entities.Task
-import java.time.LocalDateTime
-
-
 /**
  * @author jerry on 13/08/2020
  * for Todo
  **/
+package me.jerryhanks.todo.core.models
+
+import me.jerryhanks.todo.core.data.db.entities.Task
+import java.time.LocalDateTime
 
 data class GTask(
     val id: String,
@@ -25,6 +23,7 @@ data class GTask(
     val hidden: Boolean,
     val links: List<GLink>
 ) {
+    @Suppress("UnusedPrivateMember")
     private fun toTask() = Task(
         -1L,
         gId = id,
