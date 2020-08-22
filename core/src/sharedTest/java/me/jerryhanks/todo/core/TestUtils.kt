@@ -1,7 +1,9 @@
 package me.jerryhanks.todo.core
 
 import me.jerryhanks.todo.core.data.db.entities.Task
+import me.jerryhanks.todo.core.data.db.entities.TasksList
 import java.time.LocalDateTime
+import java.util.*
 
 
 /**
@@ -11,6 +13,7 @@ import java.time.LocalDateTime
 
 object TestUtils {
     const val TEST_TASK_ID = 1L
+    const val TASK_LIST_ID = 1L
     const val TEST_TASK_NOTE = "Noted goes here"
     const val TEST_TASK_STATUS = "status"
     const val TEST_TASK_TITLE = "Respond to Email Conversation"
