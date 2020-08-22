@@ -5,7 +5,6 @@ import Dependencies.Kotlin
 import Dependencies.Navigation
 import Dependencies.Network
 import Dependencies.ProjectModule.app
-import Dependencies.ProjectModule.core
 import Dependencies.Test
 import Dependencies.Utils
 import Dependencies.View
@@ -45,6 +44,9 @@ dependencies {
     implementation(Hilt.hiltViewModel)
     kapt(Hilt.hiltAndroidCompiler)
     kapt(Hilt.hiltCompiler)
+
+    implementation("com.google.dagger:dagger-android-support:2.28.3")
+    kapt("com.google.dagger:dagger-android-processor:2.28.3")
 
     /**Retrofit*/
     Network.components.forEach { implementation(it) }

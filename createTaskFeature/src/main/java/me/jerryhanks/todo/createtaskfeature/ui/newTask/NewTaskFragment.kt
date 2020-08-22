@@ -14,13 +14,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.ct_feat_fragment_first.*
 import me.jerryhanks.createtaskfeature.R
+import me.jerryhanks.todo.core.di.Injectable
 import javax.inject.Inject
 
-class NewTaskFragment : Fragment() {
+class NewTaskFragment : Fragment(), Injectable {
+
     @Inject
     lateinit var viewModeProviderFactory: ViewModelProvider.Factory
 
-    private val viewModel = viewModels<NewTaskViewModel> { viewModeProviderFactory }
+    private val viewModel by viewModels<NewTaskViewModel> { viewModeProviderFactory }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +36,8 @@ class NewTaskFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        viewModel.getTodos()
 
 
     }
