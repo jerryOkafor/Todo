@@ -8,13 +8,12 @@ package me.jerryhanks.todo.core.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import kotlinx.coroutines.runBlocking
-import me.jerryhanks.todo.core.TestUtils
+import junit.framework.Assert.assertEquals
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.runBlockingTest
 import me.jerryhanks.todo.core.data.db.daos.TasksListDao
 import me.jerryhanks.todo.core.utils.DefaultValues
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.`is`
-import org.hamcrest.Matchers.hasSize
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -36,12 +35,14 @@ class TaskListDaoTest : BaseDaoTest() {
     }
 
     @Test
-    fun shouldReturnListofTasksLists_whenDbisCreated() = runBlocking {
+    fun shouldReturnListofTasksLists_whenDbisCreated() = runBlockingTest {
         val testValues = DefaultValues.defaultTasksListValues()
-        val tasksLists = tasksLisDao.tasksLists()
+        val job = launch {
+            val tasksLists = tasksLisDao.tasksLists()
+            assertEquals(tasksLists.toList(), testValues)
+        }
 
-        assertThat(tasksLists, hasSize(testValues.size))
-        assertThat(tasksLists.first().id, `is`(TestUtils.TASK_LIST_ID))
+        job.cancel()
     }
 
 

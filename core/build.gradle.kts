@@ -29,9 +29,16 @@ android {
             }
         }
     }
+
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+    }
+
     buildTypes.all {
         buildConfigField("String", "GOOGLE_TASK_API_KEY", "\"${googleTaskApiKey}\"")
     }
+
     sourceSets {
         val androidTest by named("androidTest")
         val test by named("test")
@@ -100,6 +107,7 @@ dependencies {
     /**Android Test*/
     androidTestImplementation(AndroidTest.testExtension)
     androidTestImplementation(AndroidTest.espresso)
+    androidTestImplementation(Kotlin.coroutineTest)
     androidTestImplementation(AndroidX.coreTesting)
 
     androidTestImplementation(Hilt.hiltAndroidTest)

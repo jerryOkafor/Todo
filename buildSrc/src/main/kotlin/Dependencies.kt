@@ -59,7 +59,7 @@ object Dependencies {
     object Kotlin {
         object Versions {
             const val kotlin = "1.3.72"
-            const val coroutines = "1.3.8"
+            const val coroutines = "1.3.9"
         }
 
         const val stdlib: String = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"

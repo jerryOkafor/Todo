@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 import me.jerryhanks.todo.core.data.db.entities.TasksList
 
 
@@ -21,5 +22,8 @@ abstract class TasksListDao {
     abstract suspend fun insert(tasksLists: List<TasksList>)
 
     @Query("SELECT * FROM taskLists")
-    abstract suspend fun tasksLists(): List<TasksList>
+    abstract fun tasksLists(): Flow<List<TasksList>>
+
+    @Query("SELECT * FROM taskLists WHERE gId=:gId")
+    abstract fun taskList(gId: String): Flow<TasksList>
 }
