@@ -1,3 +1,7 @@
+/**
+ * @author jerry on 19/07/2020
+ * for Todo
+ **/
 package me.jerryhanks.todo.createtaskfeature.di
 
 import android.content.Context
@@ -8,17 +12,12 @@ import dagger.Component
 import dagger.Module
 import dagger.hilt.migration.DisableInstallInCheck
 import dagger.multibindings.IntoMap
-import me.jerryhanks.todo.createtaskfeature.ui.NewTaskActivity
-import me.jerryhanks.todo.createtaskfeature.ui.NewTaskViewModel
-import me.jerryhanks.todo.di.CreateTaskModuleDependencies
 import me.jerryhanks.todo.core.viewmodel.ViewModelFactoryModule
 import me.jerryhanks.todo.core.viewmodel.ViewModelKey
+import me.jerryhanks.todo.createtaskfeature.ui.NewTaskActivity
+import me.jerryhanks.todo.createtaskfeature.ui.newTask.NewTaskViewModel
+import me.jerryhanks.todo.di.CreateTaskModuleDependencies
 import javax.inject.Singleton
-
-/**
- * @author jerry on 19/07/2020
- * for Todo
- **/
 
 @Component(
     modules = [ViewModelFactoryModule::class, CreateTaskViewModelModule::class],

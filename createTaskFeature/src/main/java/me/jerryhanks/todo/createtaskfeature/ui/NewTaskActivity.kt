@@ -9,6 +9,7 @@ import dagger.hilt.android.EntryPointAccessors
 import me.jerryhanks.createtaskfeature.R
 import me.jerryhanks.todo.core.ui.BaseActivity
 import me.jerryhanks.todo.createtaskfeature.di.DaggerCreateTaskComponent
+import me.jerryhanks.todo.createtaskfeature.ui.newTask.NewTaskViewModel
 import me.jerryhanks.todo.di.CreateTaskModuleDependencies
 import javax.inject.Inject
 
@@ -42,7 +43,7 @@ class NewTaskActivity : BaseActivity() {
             .inject(this)
 
         // invoke
-        newTaskViewModel.getTodos()
+//        newTaskViewModel.getTodos()
     }
 
     override fun onSupportNavigateUp(): Boolean {

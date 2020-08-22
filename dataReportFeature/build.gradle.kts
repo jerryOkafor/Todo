@@ -3,9 +3,8 @@ import Dependencies.AndroidX
 import Dependencies.Hilt
 import Dependencies.Kotlin
 import Dependencies.Navigation
-import Dependencies.ProjectModule.app
-import Dependencies.ProjectModule.core
 import Dependencies.Network
+import Dependencies.ProjectModule.app
 import Dependencies.Test
 import Dependencies.View
 
@@ -21,7 +20,6 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     implementation(project(app))
-    implementation(project(core))
     implementation(Kotlin.stdlib)
 
     implementation(AndroidX.coreKtx)

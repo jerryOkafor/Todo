@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/createTaskFragment"
-        android:name="me.jerryhanks.todo.createtaskfeature.ui.NewTaskFragment"
+        android:name="me.jerryhanks.todo.createtaskfeature.ui.newTask.NewTaskFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/ct_feat_fragment_first">
 
@@ -18,7 +18,7 @@
 
     <dialog
         android:id="@+id/addTagFragment"
-        android:name="me.jerryhanks.todo.createtaskfeature.ui.AddTagFragment"
+        android:name="me.jerryhanks.todo.createtaskfeature.ui.addTag.AddTagFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/ct_feat_add_tag_fragment" />
 </navigation>

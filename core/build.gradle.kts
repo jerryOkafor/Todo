@@ -87,8 +87,8 @@ dependencies {
     kapt(Hilt.hiltCompiler)
 
     /**Room*/
-    implementation(AndroidX.roomRuntime)
-    implementation(AndroidX.roomKtx)
+    api(AndroidX.roomRuntime)
+    api(AndroidX.roomKtx)
     kapt(AndroidX.roomCompiler)
 
     /**Retrofit*/

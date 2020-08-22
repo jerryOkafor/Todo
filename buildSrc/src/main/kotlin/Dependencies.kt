@@ -93,7 +93,6 @@ object Dependencies {
         const val roomKtx = "androidx.room:room-ktx:${Dependencies.Versions.room}"
 
         const val coreTesting = "androidx.arch.core:core-testing:${Versions.coreTesting}"
-
         override val components = listOf(coreKtx, lifeCycleCommon, viewModel, appComppat)
     }
 
@@ -165,11 +164,14 @@ object Dependencies {
             const val timber = "4.7.1"
             const val playCore = "1.7.3"
             const val playCoreKtx = "1.7.0"
+            const val knotVersion = "3.1.1"
         }
 
         const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
         const val playCore = "com.google.android.play:core:${Versions.playCore}"
         const val playCoreKtx = "com.google.android.play:core-ktx:${Versions.playCoreKtx}"
+        const val knot = "de.halfbit:knot3:${Versions.knotVersion}"
+
         override val components = listOf(timber, playCore, playCoreKtx)
     }
 

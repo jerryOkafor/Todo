@@ -1,4 +1,4 @@
-package me.jerryhanks.todo.createtaskfeature.ui
+package me.jerryhanks.todo.createtaskfeature.ui.newTask
 
 import android.os.Bundle
 import android.view.LayoutInflater

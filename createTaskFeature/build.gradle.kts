@@ -3,10 +3,11 @@ import Dependencies.AndroidX
 import Dependencies.Hilt
 import Dependencies.Kotlin
 import Dependencies.Navigation
+import Dependencies.Network
 import Dependencies.ProjectModule.app
 import Dependencies.ProjectModule.core
-import Dependencies.Network
 import Dependencies.Test
+import Dependencies.Utils
 import Dependencies.View
 
 plugins {
@@ -20,7 +21,6 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     implementation(project(app))
-    implementation(project(core))
     implementation(Kotlin.stdlib)
 
     implementation(AndroidX.coreKtx)
@@ -30,9 +30,10 @@ dependencies {
 
     implementation(View.material)
     implementation(View.constraintLayout)
+    implementation(Utils.knot)
 
     /**Utils*/
-    api(Dependencies.Utils.timber)
+    api(Utils.timber)
 
     /**Navigation*/
     api(Navigation.navigationFragmentKtx)

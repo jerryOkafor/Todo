@@ -63,7 +63,7 @@ dependencies {
     implementation(Kotlin.coroutineAndroid)
 
     /**Modules*/
-    implementation(project(core))
+    api(project(core))
     implementation(project(timeline))
 
     implementation(AndroidX.coreKtx)

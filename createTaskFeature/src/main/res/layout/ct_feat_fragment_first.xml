@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
-    tools:context="me.jerryhanks.todo.createtaskfeature.ui.NewTaskFragment">
+    tools:context="me.jerryhanks.todo.createtaskfeature.ui.newTask.NewTaskFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

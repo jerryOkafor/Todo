@@ -15,6 +15,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.time.LocalDateTime
+import javax.inject.Singleton
 
 
 /**
@@ -34,6 +35,7 @@ object NetworkModule {
     }
 
     @Provides
+    @Singleton
     fun provideTaskService(retrofit: Retrofit): TaskService {
         return retrofit.create(TaskService::class.java)
     }
