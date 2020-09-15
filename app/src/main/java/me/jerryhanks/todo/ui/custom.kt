@@ -121,8 +121,10 @@ class TodoRecyclerView @JvmOverloads constructor(
     }
 
     override fun setLayoutManager(layout: LayoutManager?) {
-        super.setLayoutManager(layout)
-        layoutManager = layout as LinearLayoutManager
+        if (layoutManager == null) {
+            super.setLayoutManager(layout)
+            layoutManager = layout as LinearLayoutManager
+        }
     }
 
     fun setAppBarTracking(tracking: AppBarTracking) {

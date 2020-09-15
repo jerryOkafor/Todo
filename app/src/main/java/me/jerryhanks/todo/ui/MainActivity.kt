@@ -186,8 +186,9 @@ class MainActivity : BaseActivity(), Navigable {
 //    }
 
     companion object {
-        //        var topspace = 0
-//        private const val RC_TASKS = 10112
+        const val topspace = 0
+
+        //        private const val RC_TASKS = 10112
         private const val USED_INTENT = "USED_INTENT"
         private const val LOG_TAG = "MainActivity"
     }

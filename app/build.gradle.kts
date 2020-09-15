@@ -107,7 +107,7 @@ dependencies {
 
     /**Android Test*/
     AndroidTest.components.forEach { androidTestImplementation(it) }
-    androidTestImplementation("androidx.test:core:1.2.0")
-    androidTestImplementation("androidx.test:runner:1.2.0")
-    androidTestUtil("androidx.test:orchestrator:1.2.0")
+    androidTestImplementation("androidx.test:core:1.3.0")
+    androidTestImplementation("androidx.test:runner:1.3.0")
+    androidTestUtil("androidx.test:orchestrator:1.3.0")
 }

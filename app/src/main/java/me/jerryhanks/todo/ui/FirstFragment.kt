@@ -59,7 +59,7 @@ class DayBinderView(view: View) : ViewContainer(view) {
  */
 class FirstFragment : Fragment(), Navigable {
 
-    private lateinit var todoAdapter: TodoAdapter
+    private val todoAdapter by lazy { TodoAdapter() }
     private val daysOfWeek = daysOfWeekFromLocale()
     private var isAppBarIdle = true
     private var appBarOffset = 0
@@ -69,10 +69,6 @@ class FirstFragment : Fragment(), Navigable {
     private var isExpanded = false
 
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM yyyy")
-
-    private val layoutManager by lazy {
-        LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-    }
 
     private val abbBarOffsetChangeListener =
         AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
@@ -145,6 +141,28 @@ class FirstFragment : Fragment(), Navigable {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_first, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        todoAdapter.submitList((0..30).map {
+            Task(
+                id = it.toLong(),
+                gId = "gid",
+                eTag = "",
+                title = "Title",
+                updatedAt = LocalDateTime.now(),
+                selfLink = "Link",
+                parent = "Parent",
+                position = "000222",
+                notes = "Note",
+                status = "Status",
+                due = LocalDateTime.parse("2020-08-09T06:30:00"),
+                completed = LocalDateTime.parse("2020-08-30T06:30:00"),
+                deleted = false,
+                hidden = false
+            )
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -223,28 +241,9 @@ class FirstFragment : Fragment(), Navigable {
 
     private fun setupRecyclerView() {
         todoRecycler.setAppBarTracking(aappBarTracking)
-        todoAdapter = TodoAdapter()
-        todoRecycler.layoutManager = layoutManager
+        todoRecycler.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         todoRecycler.adapter = todoAdapter
-
-        todoAdapter.submitList((0..30).map {
-            Task(
-                id = it.toLong(),
-                gId = "gid",
-                eTag = "",
-                title = "Title",
-                updatedAt = LocalDateTime.now(),
-                selfLink = "Link",
-                parent = "Parent",
-                position = "000222",
-                notes = "Note",
-                status = "Status",
-                due = LocalDateTime.parse("2020-08-09T06:30:00"),
-                completed = LocalDateTime.parse("2020-08-30T06:30:00"),
-                deleted = false,
-                hidden = false
-            )
-        })
     }
 }
 
